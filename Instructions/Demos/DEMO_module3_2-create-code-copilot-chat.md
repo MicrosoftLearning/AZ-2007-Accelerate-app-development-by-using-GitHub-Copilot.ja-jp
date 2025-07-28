@@ -1,99 +1,99 @@
 ---
 demo:
-    title: 'Demo: Create code by using GitHub Copilot Inline Chat'
-    module: 'Module 3: Develop code features using GitHub Copilot tools'
+  title: 'デモ:GitHub Copilot インライン チャットを使用してコードを作成する'
+  module: 'Module 3: Develop code features using GitHub Copilot tools'
 ---
 
-# Demo: Create code by using GitHub Copilot Inline Chat
+# デモ:GitHub Copilot インライン チャットを使用してコードを作成する
 
-## Instructions
+## 手順
 
-The demo activities are designed for an environment that includes the following resources:
+デモのアクティビティは、次のリソースを含む環境向けに設計されています。
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
+- Visual Studio Code。
+- Visual Studio Code 用の C# 開発キット拡張機能。
+- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
+- C# を使用して作成されたサンプル コード プロジェクト。
 
-**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
 
-**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
 
-### Introduce the demo
+### デモを紹介する
 
-The GitHub Copilot Chat extension for Visual Studio Code includes three chat interfaces:
+Visual Studio Code 用の GitHub Copilot Chat 拡張機能には、次の 3 つのチャット インターフェイスが含まれています。
 
-- The **Chat view** provides an AI assistant that's available to help you at any time.
-- A **Quick Chat** window can be used to ask a quick question and then get back into what you're doing.
-- The **inline chat** interface opens directly in the editor for contextual interactions while you're coding.
+- **チャット ビュー**には、いつでも役立つ AI アシスタントが用意されています。
+- **クイック チャット** ウィンドウを使用すると、簡単な質問をして、作業内容に戻ることができます。
+- **インライン チャット** インターフェイスは、コーディング中にコンテキスト操作のためにエディターで直接開きます。
 
-The Chat view and Quick Chat window enable interactive multi-turn conversations with the AI. Both of these interfaces provide a way to ask questions, get help with a coding problem, and generate code. During a conversation, GitHub Copilot responses include natural language text, code blocks, and other elements. When code blocks are provided in a response, you can copy them or inject them directly into your code editor.
+[チャット] ビューと [クイック チャット] ウィンドウを使用すると、AI との対話型のマルチターン会話が可能になります。 どちらのインターフェイスも、質問をしたり、コーディングの問題に関するヘルプを表示したり、コードを生成したりするための方法を提供します。 会話中、GitHub Copilot の応答には、自然言語テキスト、コード ブロック、その他の要素が含まれます。 応答でコード ブロックが提供されている場合は、コード ブロックをコピーするか、コード エディターに直接挿入することができます。
 
-The inline chat interface is designed to provide contextual help and code suggestions while you're coding.
+インライン チャット インターフェイスは、コーディング中にコンテキスト ヘルプとコード提案を提供するように設計されています。
 
-In this demonstration, you use GitHub Copilot's inline chat feature to generate new code features. The demonstration is a continuation of the project scenario in the previous demonstration. Use the prepared sample app, `APL2007M3SalesReport-InlineChat`, to start the demo. During the demo you'll update the `SalesData` data structure and the `GenerateSalesData` method. You'll also update the `QuarterlySalesReport` method to include additional calculations and display options.
+このデモでは、GitHub Copilot のインライン チャット機能を使用して、新しいコード機能を生成します。 このデモは、前のデモでのプロジェクト シナリオの続きです。 準備したサンプル アプリ (`APL2007M3SalesReport-InlineChat`) を使用してデモを開始します。 デモでは、`SalesData` データ構造と `GenerateSalesData` メソッドを更新します。 また、`QuarterlySalesReport` メソッドを更新して、追加の計算と表示オプションを含めます。
 
-#### Review the coding tasks and project goals
+#### コーディング タスクとプロジェクトの目標を確認する
 
-This demonstration focuses on using GitHub Copilot to accelerate the following tasks:
+このデモでは、GitHub Copilot を使用して次のタスクを高速化することに重点を置いています。
 
-1. You will update the `SalesData` data structure and `GenerateSalesData` method to produce a data sample that resembles "actual" data.
+1. `SalesData` データ構造と `GenerateSalesData` メソッドを更新して、"実際の" データに似たデータ サンプルを生成します。
 
-    - dateSold: no changes are required.
-    - departmentName: The string values should be randomly selected from a list of 8 departments. For each department name, create a 4-character abbreviation that can be included in the productID.
-    - productID: change from `int` to `string` data type. The productID values should be formatted using the pattern "`DDDD-###-SS-CC-MMM`" where the components of the ID are defined as follows:
+    - dateSold: 変更は必要ありません。
+    - departmentName:文字列値は、8 つの部門のリストからランダムに選択する必要があります。 部門名ごとに、productID に含めることができる 4 文字の省略形を作成します。
+    - productID: データ型を `int` から `string` に変更します。 productID 値は、ID のコンポーネントが次のように定義されているパターン "`DDDD-###-SS-CC-MMM`" を使用してフォーマットする必要があります。
 
-        - a 4-character code representing the department.
-        - a 3-digit number representing the product.
-        - a 2-character code representing the product size.
-        - a 2-character code representing the product color.
-        - a 3-character code representing the manufacturing site (randomly selected from a list of 10 manufacturing sites). The codes should be a 2-letter ISO country code followed by a digit (e.g., US1, CA2, MX3, etc.).
+        - 部署を表す 4 文字のコード。
+        - 製品を表す 3 桁の数値。
+        - 製品サイズを表す 2 文字のコード。
+        - 製品の色を表す 2 文字のコード。
+        - 製造サイトを表す 3 文字のコード (10 の製造場所の一覧からランダムに選択)。 コードは、2 文字の ISO 国番号の後に数字 (US1、CA2、MX3 など) を付ける必要があります。
 
-    - quantitySold: no changes are required.
-    - unitPrice: Raise the lower bound of the price range to 25 and the upper bound to 300.
-    - baseCost: Add a field for the manufacturing cost of the item. The baseCost values should be generated using randomly generated discount off the unitPrice (5 to 20 percent).
-    - volumeDiscount: Add a field for a volume discount percentage. The value assigned to volumeDiscount should be the integer component of 10 percent of the quantitySold (10% of 19 units = 1% volumeDiscount).
-    - Increase the number of records generated to 10,000.
+    - quantitySold: 変更は必要ありません。
+    - unitPrice:価格帯の下限を 25 に、上限を 300 に引き上げます。
+    - baseCost:品目の製造コストのフィールドを追加します。 baseCost 値は、unitPrice (5 ~ 20%) からランダムに生成された割引を使用して生成する必要があります。
+    - volumeDiscount:ボリューム割引率のフィールドを追加します。 volumeDiscount に割り当てられる値は、quantitySold の 10% (19 ユニットの 10% = 1% volumeDiscount) の整数コンポーネントである必要があります。
+    - 生成されるレコードの数を 10,000 に増やします。
 
-1. You will update the `QuarterlySalesReport` method as follows:
+1. `QuarterlySalesReport` メソッドを次のように更新します。
 
-    1. When displaying the sales results, list the results in a logical order. For example, when listing total sale by quarter, the quarters should be listed in order from Q1 to Q4.
-    1. Display currency values using regional settings.
-    1. Include calculations for quarterly profit and profit percentage
-    1. Include calculations for quarterly sales, profit, and profit percentage by department.
+    1. 販売結果を表示するときに、結果を論理的な順序で一覧表示します。 たとえば、四半期ごとの売上合計を一覧表示する場合、四半期は第 1 四半期から第 4 四半期までの順序で一覧表示されます。
+    1. 地域設定を使用して通貨値を表示します。
+    1. 四半期利益および利益率の計算を含める
+    1. 部門別の四半期売上、利益、利益率の計算を含めます。
 
-#### Explain your approach to developing prompts for GitHub Copilot Chat
+#### GitHub Copilot Chat のプロンプトを開発するためのアプローチを説明する
 
-GitHub Copilot's inline chat feature uses the prompt you submit to understand the task or problem you're trying to solve. The prompts should be specific and concise. Good prompts produce better responses.
+GitHub Copilot のインライン チャット機能では、送信したプロンプトを使用して、解決しようとしているタスクまたは問題を理解します。 プロンプトは、具体的で簡潔である必要があります。 適切なプロンプトにより、より良い応答が生成されます。
 
-When you develop prompts for GitHub Copilot, consider the following best practices:
+GitHub Copilot のプロンプトを作成するときは、次のベスト プラクティスを検討してください。
 
-- Be specific and keep it simple: Provide clear and concise prompts that describe the task or problem you're trying to solve. Avoid using complex language or jargon that could confuse the AI.
-- Use natural language: Write prompts in a conversational tone. Use natural language that you would use when talking to a colleague or team member.
-- Break down complex tasks: If the task is complex, break it down into smaller steps. Provide prompts for each step to help GitHub Copilot generate the correct code.
-- Provide context: Include relevant information that helps GitHub Copilot understand the task or problem you're trying to solve. Include details about the data, variables, or code blocks that are relevant to the prompt.
-- Use chat participants, slash commands, and chat variables: GitHub Copilot's inline chat feature supports chat participants, slash commands, and chat variables. Use these features to interact with GitHub Copilot and provide additional context for your prompts.
+- 具体的に、シンプルに保つ:解決しようとしているタスクまたは問題を説明する明確で簡潔なプロンプトを提供します。 AI を混乱させる可能性のある複雑な言語や専門用語を使用しないでください。
+- 自然言語を使用する:会話のトーンでプロンプトを記述します。 同僚やチーム メンバーと話すときに使用する自然言語を使用します。
+- 複雑なタスクを分割する:タスクが複雑な場合は、小さな手順に分割します。 GitHub Copilot が正しいコードを生成するのに役立つ各手順のプロンプトを提供します。
+- コンテキストを指定する:GitHub Copilot が解決しようとしているタスクまたは問題を理解するのに役立つ関連情報を含めます。 プロンプトに関連するデータ、変数、またはコード ブロックに関する詳細を含めます。
+- チャット参加者、スラッシュ コマンド、チャット変数を使用する:GitHub Copilot のインライン チャット機能は、チャット参加者、スラッシュ コマンド、チャット変数をサポートしています。 これらの機能を使用して GitHub Copilot と対話し、プロンプトに追加のコンテキストを提供します。
 
-### Generate data structures using inline chat
+### インライン チャットを使用してデータ構造を生成する
 
-Projects generally begin with the features or parameters that are either fixed or known. Selecting a data source or creating sample data is often a good place to start.
+通常、プロジェクトは、固定または既知の機能またはパラメーターで始まります。 多くの場合、データ ソースを選択するか、サンプル データを作成することをおすすめします。
 
-In this section of the demo, you use data structures to help create simulated sales data. The data provides useful context for GitHub Copilot when you update the `QuarterlySalesReport` method.
+デモのこのセクションでは、シミュレートされた売上データを作成するのに役立つデータ構造を使用します。 このデータは、`QuarterlySalesReport` メソッドを更新するときに、 GitHub Copilot に便利なコンテキストを提供します。
 
 > [!NOTE]
-> In an actual business project, you'd probably use historical data rather generating simulated data. In this training, generating simulated data provides an opportunity to practice using the GitHub Copilot tools. Simulating data isn't suggested as a best practice for business projects.
+> 実際のビジネス プロジェクトでは、シミュレートされたデータを生成するのではなく、履歴データを使用する可能性があります。 このトレーニングでは、シミュレートされたデータを生成することで、GitHub Copilot ツールを使用して練習する機会を得ることができます。 データのシミュレートは、ビジネス プロジェクトのベスト プラクティスとしては推奨されません。
 
-Your project goals indicate that you need to work on the following data structures:
+プロジェクトの目標は、次のデータ構造に取り組む必要があることを示しています。
 
-- You need a list of 8 department names. Each department name should be abbreviated using a 4-character string. Pick an industry for your fictional company such as Clothing or Sports Equipment, and then have GitHub Copilot generate a dictionary of department names and 4-char codes.
-- You need a list of 10 manufacturing sites. Each site should be represented by a 3-character code. The codes can be a 2-letter ISO country code followed by a digit (e.g., US1, CA2, MX3, etc.). Have GitHub Copilot generate a dictionary of 10 manufacturing sites using 3-4 country codes.
-- You need to update the `SalesData` data structure. You need to include the new fields for: department code, manufacturing site code. You also need to change the data type for productID from `int` to `string`.
+- 8 つの部署名のリストが必要です。 各部門名は、4 文字の文字列を使用して省略する必要があります。 衣料品やスポーツ用品などの架空の会社の業界を選び、GitHub Copilot に部門名と 4 文字コードの辞書を生成してもらいます。
+- 10 の製造サイトの一覧が必要です。 各サイトは 3 文字のコードで表す必要があります。 コードは、2 文字の ISO 国番号の後に数字 (US1、CA2、MX3 など) を付けることができます。 3 から 4 の国番号を使用して、GitHub Copilot に 10 の製造サイトの辞書を生成させます。
+- `SalesData` データ構造を更新する必要があります。 部門コード、製造サイト コードの新しいフィールドを含める必要があります。 また、productID のデータ型を `int` から `string` に変更する必要があります。
 
-To create and update the data structure, complete the following steps:
+データ構造を作成して更新するには、次の手順を実行します。
 
-1. Open the **APL2007M3SalesReport-InlineChat** project folder in Visual Studio Code.
+1. Visual Studio Code で **APL2007M3SalesReport-InlineChat** プロジェクト フォルダーを開きます。
 
-1. Ensure that the application runs and produces a report that resembles the following output:
+1. アプリケーションが実行され、次の出力のようなレポートが生成されることを確認します。
 
     ```plaintext
     Quarterly Sales Report
@@ -104,27 +104,27 @@ To create and update the data structure, complete the following steps:
     Q1: $595963.0477790226
     ```
 
-    Since the data is randomly generated, the numeric values will vary with each run.
+    データはランダムに生成されるため、数値は実行ごとに異なります。
 
-1. Open the Program.cs file.
+1. Program.cs ファイルを開きます。
 
-1. Position the cursor on a blank line below the `SalesData` data structure.
+1. `SalesData` データ構造の下の空白行にカーソルを置きます。
 
-1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
+1. インライン チャット インターフェイスを開くには、キーボードの **Ctrl + I** キーを押します。
 
-1. Enter the following prompt:
+1. 次のプロンプトを入力します。
 
     ```output
     I need a public struct ProdDepartments that contains a static string array for 8 clothing industry departments. Create separate string array containing 4-character abbreviations for each department name. The abbreviation must be unique. The department names should represent real department names for the clothing industry.
     ```
 
-    If you had a specific list of field names, you could provide them in the prompt. For example, actual company data could be used to specify the department names.
+    フィールド名の特定のリストがある場合は、プロンプトでフィールド名を指定できます。 たとえば、実際の会社データを使用して部署名を指定できます。
 
-1. Review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認します。
 
-    As long as the prompt is clear and specific, GitHub Copilot should provide a useful suggestion. If the suggestion isn't what you expected, you can reject it and try again. In this case, the names of the departments aren't important, so you can probably accept the suggestion.
+    プロンプトが明確で具体的である限り、GitHub Copilot は便利な提案を提供します。 提案が予期した内容でない場合は、拒否してもう一度試すことができます。 この場合、部署の名前は重要ではないため、おそらく提案を受け入れることもできます。
 
-    Your data structure should resemble the following code:
+    データ構造は次のコードのようになります。
 
     ```csharp
 
@@ -136,25 +136,25 @@ To create and update the data structure, complete the following steps:
 
     ```
 
-1. To accept the suggestion, press the tab key or select **Accept**.
+1. 提案を受け入れるには、タブ キーを押すか、**[承諾]** を選択します。
 
-    You can also use the inline chat feature to document the new code. Select the code, press **Ctrl+I** to open inline chat, enter `/doc`, review the suggested inline documentation, and then accept the update.
+    インライン チャット機能を使用して、新しいコードを文書化することもできます。 コードを選択し、**Ctrl + I** キーを押してインライン チャットを開き、「`/doc`」と入力して、推奨されるインライン ドキュメントを確認してから、更新を受け入れます。
 
-1. Position the cursor on a blank line below the `ProdDepartments` data structure.
+1. `ProdDepartments` データ構造の下の空白行にカーソルを置きます。
 
-1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
+1. インライン チャット インターフェイスを開くには、キーボードの **Ctrl + I** キーを押します。
 
-1. Enter the following prompt:
+1. 次のプロンプトを入力します。
 
     ```output
     I need a public struct ManufacturingSites that contains a static string array for 10 manSites. Manufacturing sites should be represented by a 3-character code that includes a 2-letter ISO country code followed by a digit. Use 3 ISO country codes.
     ```
 
-    If you had a specific list of field names, you could provide them in the prompt. For example, actual company data could be used to specify the field names.
+    フィールド名の特定のリストがある場合は、プロンプトでフィールド名を指定できます。 たとえば、実際の会社データを使用してフィールド名を指定できます。
 
-1. Review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認します。
 
-    Your data structures should resemble the following code:
+    データ構造は次のコードのようになります。
 
     ```csharp
 
@@ -165,23 +165,23 @@ To create and update the data structure, complete the following steps:
 
     ```
 
-1. To accept the suggestion, press the tab key or select **Accept**.
+1. 提案を受け入れるには、タブ キーを押すか、**[承諾]** を選択します。
 
-1. Select the `SalesData` data structure, and then press **Ctrl+I** to open the inline chat interface.
+1. `SalesData` データ構造を選択し、**Ctrl + I** キーを押してインライン チャット インターフェイスを開きます。
 
-    You need to add fields for `baseCost` and `volumeDiscount` to the `SalesData` data structure (a `double` and an `int`). You also need to change the data type for `productID` from `int` to `string`.
+    `baseCost` と `volumeDiscount` のフィールドを `SalesData` データ構造 (`double` と `int`) に追加する必要があります。 また、`productID` のデータ型を `int` から `string` に変更する必要があります。
 
-1. Enter the following prompt:
+1. 次のプロンプトを入力します。
 
     ```output
     add double field baseCost and int field volumeDiscount to SalesData. Change productID from int to string.
     ```
 
-    In practice, it may be easier to make these changes manually. However, using GitHub Copilot can help you learn how to structure your prompts for better results.
+    実際には、これらの変更を手動で行う方が簡単な場合があります。 ただし、GitHub Copilot を使用すると、より良い結果を得るためにプロンプトを構造化する方法を学習するのに役立ちます。
 
-1. Review the suggestions provided by GitHub Copilot and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-    Your updated SalesData data structures should resemble the following code:
+    更新された SalesData データ構造は、次のコードのようになります。
 
     ```csharp
 
@@ -198,60 +198,60 @@ To create and update the data structure, complete the following steps:
 
     ```
 
-With the new and updated data structures in place, you can now work on updating the `GenerateSalesData` method.
+新しいデータ構造と更新されたデータ構造を使用して、`GenerateSalesData` メソッドの更新に取り組むことができます。
 
-### Update the GenerateSalesData method using inline chat
+### インライン チャットを使用して GenerateSalesData メソッドを更新する
 
-Your project goals indicate that you need to update the `GenerateSalesData` method to produce a data sample that resembles "actual" data. You've already updated the `SalesData` data structure to include new fields for department code and manufacturing site code. You also changed the data type for `productID` from `int` to `string`. Now you need to update the `GenerateSalesData` method to generate data for the updated fields.
+プロジェクトの目標は、"実際の" データに似たデータ サンプルを生成するために、 `GenerateSalesData` メソッドを更新する必要があることを示しています。 部門コードと製造サイト コードの新しいフィールドを含むように、 `SalesData` データ構造が既に更新されています。 また、`productID` のデータ型を `int` から `string` に変更しました。 次に、`GenerateSalesData` メソッドを更新して、更新されたフィールドのデータを生成する必要があります。
 
-You need to implement the following updates:
+次の更新プログラムを実装する必要があります。
 
-- departmentName: Update the assigned value. Assign a randomly selected department name from the `ProdDepartments` data structure.
-- productID: Update the assigned value. Format the productID using the pattern "`DDDD-###-SS-CC-MMM`" where the components of the ID are defined as follows:
+- departmentName:割り当てられた値を更新します。 `ProdDepartments` データ構造からランダムに選択された部門名を割り当てます。
+- productID:割り当てられた値を更新します。 ID のコンポーネントが次のように定義されているパターン "`DDDD-###-SS-CC-MMM`" を使用して productID をフォーマットします。
 
-    - a 4-character code representing the department. Use the abbreviation from the `ProdDepartments` data structure corresponding to the assigned department name.
-    - a 3-digit number representing the product. The first digit should be the index number of the randomly selected department. The next two digits should be a random number from 1 to 99, but include leading 0s. For example, 1 should be formatted as 01.
-    - a 2-character code representing the product size. Randomly select a product size from a list of 5 sizes: XS, S, M, L, XL.
-    - a 2-character code representing the product color. Randomly select a product color from a list of 8 2-character color abbreviations: BK, BL, GR, RD, YL, OR, WT, GY.
-    - a 3-character code representing the manufacturing site. Randomly select a manufacturing site from the `ManufacturingSites` data structure.
+    - 部署を表す 4 文字のコード。 割り当てられた部門名に対応する `ProdDepartments` データ構造の省略形を使用します。
+    - 製品を表す 3 桁の数値。 最初の数字は、ランダムに選択された部門のインデックス番号である必要があります。 次の 2 桁は 1 ~ 99 の乱数にする必要がありますが、先頭には 0 を含めます。 たとえば、1 は 01 としてフォーマットする必要があります。
+    - 製品サイズを表す 2 文字のコード。 5 つのサイズのリストから製品サイズをランダムに選択します。XS、S、M、L、XL。
+    - 製品の色を表す 2 文字のコード。 2 文字の色の省略形 8 種類からランダムに製品の色を選択します。BK、BL、GR、RD、YL、OR、WT、GY。
+    - 製造サイトを表す 3 文字のコード。 `ManufacturingSites` データ構造から製造サイトをランダムに選択します。
 
-- unitPrice: Raise the lower bound of the price range to 25 and the upper bound to 300. Assume that size and color don't affect the unit price.
-- baseCost: Assign a value to baseCost that represents manufacturing costs. Values can be generated using randomly generated discount off the unitPrice (5 to 20 percent). Not realistic, but acceptable for this demonstration.
-- volumeDiscount: Assign a value to volumeDiscount that represents a percentage discount awarded to the retail buyer. The value assigned to volumeDiscount should be the integer component of 10 percent of the quantitySold (10% of 19 units = 1% volumeDiscount).
+- unitPrice:価格帯の下限を 25 に、上限を 300 に引き上げます。 サイズと色が単価に影響しないものとします。
+- baseCost:製造コストを表す値を baseCost に割り当てます。 値は、unitPrice (5 ~ 20%) からランダムに生成された割引を使用して生成することができます。 現実的ではありませんが、このデモでは許容されます。
+- volumeDiscount:小売購入者に与えられる割引率を表す値を volumeDiscount に割り当てます。 volumeDiscount に割り当てられる値は、quantitySold の 10% (19 ユニットの 10% = 1% volumeDiscount) の整数コンポーネントである必要があります。
 
-To update the `GenerateSalesData` method, complete the following steps:
+`GenerateSalesData` メソッドを更新するには、次の手順を実行します。
 
-1. Locate the `GenerateSalesData` method in the Program.cs file.
+1. Program.cs ファイルで `GenerateSalesData` メソッドを見つけます。
 
-1. Select the code line used to assign the `departmentName` value.
+1. `departmentName` 値の割り当てに使用するコード行を選択します。
 
-1. To open the inline chat interface, press **Ctrl+I** on the keyboard.
+1. インライン チャット インターフェイスを開くには、キーボードの **Ctrl + I** キーを押します。
 
-1. Enter the following prompt:
+1. 次のプロンプトを入力します。
 
     ```output
     Update the departmentName assignment to randomly select a department name. Use the ProdDepartments data structure. 
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Create three blank code lines after the `departmentName` assignment.
+1. `departmentName` 割り当ての後に 3 つの空白のコード行を作成します。
 
-1. Take a minute to consider how you want to construct the value assigned to `productID`.
+1. `productID` に割り当てられた値を構築する方法を検討するには、少し時間がかかります。
 
-    The productID values should be formatted as "`DDDD-###-SS-CC-MMM`" where the components of the ID are defined as follows:
+    productID 値は "`DDDD-###-SS-CC-MMM`" としてフォーマットする必要があります。ここで、ID のコンポーネントは次のように定義されます。
 
-    - `DDDD` is a 4-character code representing the department. Use the abbreviation from the `ProdDepartments` data structure corresponding to the assigned department name.
-    - `###` is 3 numeric characters representing a product. The first digit is the index number of the department. Next is a random number 1-99 with a leading 0 (for example: "07").
-    - `SS` is a 2-character code representing the product size. Randomly select a product size from a list of 5 sizes: XS, S, M, L, XL.
-    - `CC` is a 2-character code representing the product color. Randomly select a product color from a list of 8 2-character color abbreviations: BK, BL, GR, RD, YL, OR, WT, GY.
-    - `MMM` is a 3-character code representing the manufacturing site. Randomly select a manufacturing site from the `ManufacturingSites` data structure.
+    - `DDDD` は、部署を表す 4 文字のコードです。 割り当てられた部門名に対応する `ProdDepartments` データ構造の省略形を使用します。
+    - `###` は、製品を表す 3 つの数字です。 最初の桁は、部門のインデックス番号です。 次に、1 から 99 の乱数で、先頭に 0 を付けた値を指定します (例: "07" など)。
+    - `SS` は、製品サイズを表す 2 文字のコードです。 5 つのサイズのリストから製品サイズをランダムに選択します。XS、S、M、L、XL。
+    - `CC` は、製品の色を表す 2 文字のコードです。 2 文字の色の省略形 8 種類からランダムに製品の色を選択します。BK、BL、GR、RD、YL、OR、WT、GY。
+    - `MMM` は、製造サイトを表す 3 文字のコードです。 `ManufacturingSites` データ構造から製造サイトをランダムに選択します。
 
-    This formatting specification is too complex to describe as a single prompt. It should be broken down into smaller steps.
+    この書式指定は複雑すぎるため、1 つのプロンプトとして記述する必要があります。 これは、より小さなステップに分割する必要があります。
 
-    It's worth noting that the index number of the selected departmentName can be used to select the departmentAbbreviation and to calculate the first digit of the product number.
+    選択した departmentName のインデックス番号を使用して departmentAbbreviation を選択し、製品番号の最初の桁を計算できることに注意してください。
 
-1. Copy the following variable declarations and paste them at the location of the second blank code line that you created.
+1. 次の変数宣言をコピーし、作成した 2 番目の空白のコード行の場所に貼り付けます。
 
     ```csharp
 
@@ -265,90 +265,90 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     ```
 
-    You should have a blank code line before and after the variable declarations.
+    変数宣言の前後に空白のコード行が必要です。
 
-    Variable declarations aren't required for inline chat to generate code update suggestions from a prompt, but they do help anchor GitHub Copilot to a specific line of code where the update belongs.
+    インライン チャットでプロンプトからコード更新候補を生成するために変数宣言は必要ありませんが、これらは、GitHub Copilot が更新を適用すべき特定のコード行を認識するのに役立ちます。
 
-1. Select the `int indexOfDept = 0;` code line, open the inline chat, and then enter the following prompt:
+1. `int indexOfDept = 0;` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Assign the array index for departmentName to indexOfDept.
     ```
 
-1. Review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認します。
 
-    You should see a suggestion that assigns the array index number corresponding to the selected departmentName to indexOfDept.
+    選択した departmentName に対応する配列インデックス番号を indexOfDept に割り当てる提案が表示されます。
 
-    If you don't get the expected suggestion, you can select **Discard** to reject the suggestion and try again. The following prompt provides additional context for the assignment:
+    予想される提案が表示されない場合は、**[破棄]** を選択して提案を拒否し、もう一度やり直すことができます。 次のプロンプトは、割り当ての追加のコンテキストを提供します。
 
     ```output
     Create an int named indexOfDept. Assign the array index number corresponding to the selected departmentName to indexOfDept.
     ```
 
-    This prompt specifies creating an integer variable named `indexOfDept` as well as how to assign a value. You could run this prompt without creating/selecting the variable declaration, but GitHub Copilot can occasionally lose its anchor point when you open the inline chat without any code selected.
+    このプロンプトでは、`indexOfDept` という名前の整数変数の作成と、値の割り当て方法を指定します。 変数宣言を作成または選択せずにこのプロンプトを実行することもできますが、コードを選択せずにインライン チャットを開くと、GitHub Copilot がアンカー ポイントを失うことがあります。
 
     > [!NOTE]
-    > The **Toggle Changes** button (accessible from the **More Actions** dropdown menu to the right of the **Accept** and **Discard** buttons) can be used to show/hide the code deleted by the suggested update. This can be useful when you want to see the original code and the suggested code update.
+    > **[変更の切り替え]** ボタン (**[受け入れる]** ボタンと **[破棄]** ボタンの右側にある **[その他のアクション]** ドロップダウン メニューからアクセスできます) を使用すると、推奨される更新プログラムによって削除されたコードを表示または非表示にすることができます。 これは、元のコードと推奨されるコードの更新を表示する場合に役立ちます。
 
-1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
+1. GitHub Copilot から提供された提案を受け入れるには、**[承諾する]** を選択します。
 
-1. Select the `string deptAbb = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string deptAbb = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Use indexOfDept to assign a department abbreviation to deptAbb.
     ```
 
-1. Review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認します。
 
-    You should see a suggestion that assigns the array index number corresponding to the selected departmentName to indexOfDept.
+    選択した departmentName に対応する配列インデックス番号を indexOfDept に割り当てる提案が表示されます。
 
-1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
+1. GitHub Copilot から提供された提案を受け入れるには、**[承諾する]** を選択します。
 
-1. Select the `string firstDigit = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string firstDigit = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Assign indexOfDept + 1 to firstDigit.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Select the `string string nextTwoDigits = ""; = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string string nextTwoDigits = ""; = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Assign a random number 1-99 to nextTwoDigits. Include a leading 0 for numbers less than 10.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Select the `string sizeCode = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string sizeCode = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     From the list {XS, S, M, L, XL}, randomly select a product size and assign it to sizeCode.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-    In this case, you should see a suggestion that assigns a randomly selected product size to the `sizeCode` variable. GitHub Copilot could suggest using one or several code lines to satisfy this prompt. Either way, it will probably suggest creating a string array of product sizes and then use `random` to assign one of the sizes to `sizeCode`.
+    この場合、ランダムに選択された製品サイズを `sizeCode` 変数に割り当てる提案が表示されます。 このプロンプトを満たすために 1 行または数行のコードを使用することが GitHub Copilot から提案されます。 どちらの方法でも、製品サイズの文字列配列を作成し、`random` を使用してサイズのいずれかを `sizeCode` に割り当てることが推奨されます。
 
-1. Select the `string colorCode = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string colorCode = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     From the list {BK, BL, GR, RD, YL, OR, WT, GY}, randomly select a product color and assign it to colorCode.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Select the `string manufacturingSite = "";` code line, open the inline chat, and then enter the following prompt:
+1. `string manufacturingSite = "";` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Assign a randomly selected manufacturing site to manufacturingSite.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Take a minute to review your code.
+1. 少し時間を取ってコードを確認してください。
 
-    You should have a series of code lines that assign values to the variables used to construct the productID. The next step is to construct the productID value.
+    productID の構築に使用する変数に値を割り当てる一連のコード行が必要です。 次の手順では、productID 値を構築します。
 
     ```csharp
 
@@ -362,53 +362,53 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     ```
 
-1. Select the `salesData[i].productID = random.Next(1, 101);` code line, open the inline chat, and then enter the following prompt:
+1. `salesData[i].productID = random.Next(1, 101);` コード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Add a "-" to deptAbb, nextTwoDigits, sizeCode, and colorCode. Combine deptAbb, firstDigit, nextTwoDigits, sizeCode, colorCode, and manufacturingSite to create the productID.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-    You should see a suggestion that constructs the productID value using the variables you assigned earlier. The suggestion should include the necessary code to format the productID as "`DDDD-###-SS-CC-MMM`".
+    前に割り当てた変数を使用して productID 値を構築する提案が表示されます。 提案には、productID を "`DDDD-###-SS-CC-MMM`" としてフォーマットするために必要なコードが含まれている必要があります。
 
-1. Manually update the `unitPrice` assignment to use a range of 25 to 300 as follows:
+1. 次のように、`unitPrice` の割り当てを手動で更新し、25 から 300 の範囲を使用します。
 
     ```csharp
     salesData[i].unitPrice = random.Next(25, 300) + random.NextDouble();
     ```
 
-1. Create a blank line after the `unitPrice` assignment.
+1. `unitPrice` 割り当ての後に空白行を作成します。
 
-1. Accept the code line completion that appears:
+1. 表示されるコード行の入力候補を受け入れます。
 
-    GitHub Copilot should provide a suggestion that assigns a value to `baseCost` that appears similar to the following code line:
+    GitHub Copilot は、次のコード行のように表示される `baseCost` に値を割り当てる提案を提供する必要があります。
 
     ```csharp
     salesData[i].baseCost = random.Next(10, 100) + random.NextDouble();
     ```
 
-1. Select the code line used to assign a value to `salesData[i].baseCost`, open the inline chat, and then enter the following prompt:
+1. `salesData[i].baseCost` に値を割り当てるために使用するコード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Discount the unitPrice by a random percentage between 5 and 20. Assign the result to baseCost.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Create a blank line after the `baseCost` assignment and accept the code line completion that appears.
+1. `baseCost` 割り当ての後に空白行を作成し、表示されるコード行の入力候補を受け入れます。
 
-    GitHub Copilot should provide a suggestion that assigns a value to `volumeDiscount`.
+    GitHub Copilot により、`volumeDiscount` に値を割り当てることが提案されます。
 
-1. Select the code line used to assign a value to `salesData[i].volumeDiscount`, open the inline chat, and then enter the following prompt:
+1. `salesData[i].volumeDiscount` に値を割り当てるために使用するコード行を選択し、インライン チャットを開き、次のプロンプトを入力します。
 
     ```output
     Assign 10 percent of quantitySold to volumeDiscount. Truncate any fractional values.
     ```
 
-1. Review the suggestions provided by GitHub Copilot, and then select **Accept**.
+1. GitHub Copilot によって提供される提案を確認し、**[承諾する]** を選択します。
 
-1. Your updated GenerateSalesData method should now resemble the following snippet:
+1. 更新された GenerateSalesData メソッドは、次のスニペットのようになります。
 
     ```csharp
 
@@ -438,19 +438,19 @@ To update the `GenerateSalesData` method, complete the following steps:
 
     ```
 
-1. Save your changes.
+1. 変更を保存。
 
-### Update the QuarterlySalesReport method using inline chat
+### インライン チャットを使用して QuarterlySalesReport メソッドを更新する
 
-You need to update the `QuarterlySalesReport` method. Based on the project goals, you need to implement the following updates:
+`QuarterlySalesReport` メソッドを更新する必要があります。 プロジェクトの目標に基づいて、次の更新プログラムを実装する必要があります。
 
-- When displaying the sales results, list the results in a logical order. For example, when listing total sale by quarter, the quarters should be listed in order from Q1 to Q4.
-- Display currency values using regional settings.
-- Add calculations for quarterly profit and profit percentage
-- Add calculations specific to individual departments: quarterly sales, profit, and profit percentage.
-- Add calculations for specific manufacturing locations: quarterly sales, profit, and profit percentage.
+- 販売結果を表示するときに、結果を論理的な順序で一覧表示します。 たとえば、四半期ごとの売上合計を一覧表示する場合、四半期は第 1 四半期から第 4 四半期までの順序で一覧表示されます。
+- 地域設定を使用して通貨値を表示します。
+- 四半期利益および利益率の計算を追加する
+- 四半期ごとの売上、利益、利益率など、個々の部門に固有の計算を追加します。
+- 四半期ごとの売上、利益、利益率など、特定の製造場所の計算を追加します。
 
-At this point, your `QuarterlySalesReport` method should resemble the following code snippet:
+この時点で、`QuarterlySalesReport` メソッドは次のコード スニペットのようになります。
 
 ```csharp
 
@@ -484,13 +484,13 @@ public void QuarterlySalesReport(SalesData[] salesData)
 
 ```
 
-To update the `QuarterlySalesReport` method, complete the following steps:
+`QuarterlySalesReport` メソッドを更新するには、次の手順を実行します。
 
-1. To verify the current quarterly sales report output, run the application.
+1. 現在の四半期売上レポートの出力を確認するには、アプリケーションを実行します。
 
-    You should see a list of quarterly sales results displayed in the console window. Random values are used, so numeric data varies with every run.
+    四半期ごとの売上結果の一覧がコンソール ウィンドウに表示されます。 ランダムな値が使用されるため、数値データは実行ごとに異なります。
 
-    The quarterly sales report output should resemble the following:
+    四半期ごとの売上レポートの出力は次のようになります。
 
     ```output
     Quarterly Sales Report
@@ -501,31 +501,31 @@ To update the `QuarterlySalesReport` method, complete the following steps:
     Q1: $2174302.3663762277
     ```
 
-    Notice that the quarters aren't listed in order and the currency values aren't formatted properly.
+    四半期が順に表示されず、通貨値が正しくフォーマットされていないことに注意してください。
 
-    Your first task is to fix these issues.
+    最初のタスクは、これらの問題を解決することです。
 
-1. Locate the `QuarterlySalesReport` method in the Program.cs file.
+1. Program.cs ファイルで `QuarterlySalesReport` メソッドを見つけます。
 
-1. Select the entire method.
+1. メソッド全体を選択します。
 
-1. Open the inline chat interface, and then enter the following prompt:
+1. インライン チャット インターフェイスを開き、次のプロンプトを入力します。
 
     ```output
     Update the QuarterlySalesReport method to display quarterly results in order. Format currency using regional settings. 
     ```
 
-1. Take a minute to review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認するには、少し時間がかかります。
 
-    You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
+    四半期ごとの利益と利益率を計算するために必要なコードを含む提案が表示されます。 提案には、四半期ごとの利益と利益率を計算するために必要なコードが含まれています。
 
-1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
+1. GitHub Copilot から提供された提案を受け入れるには、**[承諾する]** を選択します。
 
-1. Save your changes.
+1. 変更を保存。
 
-1. Run the application and verify that the quarterly sales results are now displayed in order and that the currency values are formatted properly.
+1. アプリケーションを実行し、四半期ごとの売上の結果が順番に表示され、通貨値が正しくフォーマットされていることを確認します。
 
-    Although the numeric values are different, the quarterly sales report output should now be formatted similar to the following output:
+    数値は異なりますが、四半期ごとの売上レポートの出力は、次の出力のようにフォーマットされます。
 
     ```output
     Quarterly Sales Report
@@ -537,31 +537,31 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     ```
 
-    Your next step is to add calculations for quarterly profit and profit percentage.
+    次の手順では、四半期ごとの利益と利益率の計算を追加します。
 
-1. Locate the `QuarterlySalesReport` method in the Program.cs file.
+1. Program.cs ファイルで `QuarterlySalesReport` メソッドを見つけます。
 
-1. Select the entire method.
+1. メソッド全体を選択します。
 
-1. Open the inline chat interface, and then enter the following prompt:
+1. インライン チャット インターフェイスを開き、次のプロンプトを入力します。
 
     ```output
     Update the QuarterlySalesReport method to include calculations for quarterly profit and profit percentage. Include the new calculations in the report output.
     ```
 
-1. Take a minute to review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認するには、少し時間がかかります。
 
-    You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
+    四半期ごとの利益と利益率を計算するために必要なコードを含む提案が表示されます。 提案には、四半期ごとの利益と利益率を計算するために必要なコードが含まれています。
 
-1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
+1. GitHub Copilot から提供された提案を受け入れるには、**[承諾する]** を選択します。
 
-1. Continue to select **Accept** for the remaining suggestions.
+1. 残りの提案に対しても **[承諾する]** を選択して続けてください。
 
-1. Save your changes.
+1. 変更を保存。
 
-1. Run the application and verify that the quarterly sales results now include calculations for profit and profit percentage.
+1. アプリケーションを実行し、四半期ごとの売上結果に利益と利益率の計算が含まれるようになったことを確認します。
 
-    Although the numeric values are different, the quarterly sales report output should now be formatted similar to the following output:
+    数値は異なりますが、四半期ごとの売上レポートの出力は、次の出力のようにフォーマットされます。
 
     ```output
     Quarterly Sales Report
@@ -573,29 +573,29 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     ```
 
-    Your next step is to add calculations for quarterly sales, profit, and profit percentage by department.
+    次の手順では、部門別の四半期売上、利益、および利益率の計算を追加します。
 
-1. Select the entire method.
+1. メソッド全体を選択します。
 
-1. To open the inline chat interface, and then enter the following prompt:
+1. インライン チャット インターフェイスを開き、次のプロンプトを入力します。
 
     ```output
     Update the QuarterlySalesReport method to include calculations for quarterly sales, profit, and profit percentage by department. Include the new calculations in the report output. 
     ```
 
-1. Take a minute to review the suggestions provided by GitHub Copilot.
+1. GitHub Copilot によって提供される提案を確認するには、少し時間がかかります。
 
-    You should see a suggestion that includes the necessary code to calculate quarterly profit and profit percentage. The suggestion should include the necessary code to calculate the profit and profit percentage for each quarter.
+    四半期ごとの利益と利益率を計算するために必要なコードを含む提案が表示されます。 提案には、四半期ごとの利益と利益率を計算するために必要なコードが含まれています。
 
-1. To accept the suggestion provided by GitHub Copilot, select **Accept**.
+1. GitHub Copilot から提供された提案を受け入れるには、**[承諾する]** を選択します。
 
-1. Continue to select **Accept** for the remaining suggestions.
+1. 残りの提案に対しても **[承諾する]** を選択して続けてください。
 
-1. Save your changes.
+1. 変更を保存。
 
-1. Run the application and verify that the quarterly sales results now include calculations for profit and profit percentage.
+1. アプリケーションを実行し、四半期ごとの売上結果に利益と利益率の計算が含まれるようになったことを確認します。
 
-    Although the numeric values are different, the quarterly sales report output should now be formatted similar to the following output:
+    数値は異なりますが、四半期ごとの売上レポートの出力は、次の出力のようにフォーマットされます。
 
     ```output
     Quarterly Sales Report
@@ -646,6 +646,6 @@ To update the `QuarterlySalesReport` method, complete the following steps:
 
     ```
 
-### Summary
+### まとめ
 
-In this demo, you used the inline chat feature to update the `GenerateSalesData` and `QuarterlySalesReport` methods. You added new fields to the `SalesData` data structure and then updated the `GenerateSalesData` method to generate data for the new fields. You also updated the `QuarterlySalesReport` method to include calculations for quarterly profit and profit percentage. You also added calculations for quarterly sales, profit, and profit percentage by department.
+このデモでは、インライン チャット機能を使用して、`GenerateSalesData` メソッドと `QuarterlySalesReport` メソッドを更新しました。 `SalesData` データ構造に新しいフィールドを追加し、`GenerateSalesData` メソッドを更新して新しいフィールドのデータを生成しました。 また、四半期利益と利益率の計算を含むように `QuarterlySalesReport` メソッドを更新しました。 また、部門別の四半期売上、利益、利益率の計算も追加しました。

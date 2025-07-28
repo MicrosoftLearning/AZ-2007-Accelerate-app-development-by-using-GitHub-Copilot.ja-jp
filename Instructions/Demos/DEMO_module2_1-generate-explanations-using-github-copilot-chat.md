@@ -1,49 +1,49 @@
 ---
 demo:
-    title: 'Demo: Generate code explanations using GitHub Copilot Chat'
-    module: 'Module 2: Generate documentation using GitHub Copilot tools'
+  title: 'デモ:GitHub Copilot Chat を使用してコードの説明を生成する'
+  module: 'Module 2: Generate documentation using GitHub Copilot tools'
 ---
 
-# Demo: Generate code explanations using GitHub Copilot Chat
+# デモ:GitHub Copilot Chat を使用してコードの説明を生成する
 
-## Instructions
+## 手順
 
-The demo activities are designed for an environment that includes the following resources:
+デモのアクティビティは、次のリソースを含む環境向けに設計されています。
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
+- Visual Studio Code。
+- Visual Studio Code 用の C# 開発キット拡張機能。
+- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
+- C# を使用して作成されたサンプル コード プロジェクト。
 
-**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
 
-**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
 
-### Introduce the demo
+### デモを紹介する
 
-GitHub Copilot Chat uses conversational AI assistance and smart commands to help you with coding-related tasks. One example is the ability to explain unfamiliar and complex code.
+GitHub Copilot Chat では、会話型 AI アシスタンスとスマート コマンドを使用して、コーディング関連のタスクを支援します。 1 つの例として、見慣れない複雑なコードを説明する機能があります。
 
-You can use GitHub Copilot Chat to generate explanations for a number of reasons. For example:
+GitHub Copilot Chat を使って、さまざまな理由の説明を生成できます。 次に例を示します。
 
-- GitHub Copilot Chat can explain an entire workspace or specific project files when you join an existing project.
-- GitHub Copilot Chat can explain specific code lines or sections when code is complex or difficult to understand.
-- GitHub Copilot Chat can explain errors in your code and suggest ways to fix them.
-- GitHub Copilot Chat can explain how to add features to your project and provide code snippets that demonstrate how to implement the new code.
+- GitHub Copilot Chat は、ユーザーが既存のプロジェクトに参加するときに、ワークスペース全体または特定のプロジェクト ファイルについて説明できます。
+- GitHub Copilot Chat は、コードが複雑だったり、理解が難しかったりする場合に、特定のコード行やセクションについて説明できます。
+- GitHub Copilot Chat は、コード内のエラーを説明し、それらを修正する方法を提案できます。
+- GitHub Copilot Chat は、プロジェクトに機能を追加する方法を説明し、新しいコードを実装する方法を示すコード スニペットを提供できます。
 
-### Workspace and project file explanations
+### ワークスペースとプロジェクト ファイルの説明
 
-GitHub Copilot Chat can help you understand new projects or specific project files. You can use a combination `@workspace`, `/explain`, and `#file` in the Chat view or a Quick Chat window to generate an explanation of your project or specific project files.
+GitHub Copilot Chat は、新しいプロジェクトまたは特定のプロジェクト ファイルを理解するのに役立ちます。 チャット ビューまたはクイック チャット ウィンドウで、`@workspace`、`/explain`、`#file` の組み合わせを使用して、プロジェクトまたは特定のプロジェクト ファイルの説明を生成できます。
 
-Use the following steps to complete this section of the demo:
+以下の手順に従って、デモのこのセクションを完了します。
 
-1. Open the **APL2007M2Sample1** folder in Visual Studio Code.
+1. Visual Studio Code で **APL2007M2Sample1** フォルダーを開きます。
 
-    1. Open Visual Studio Code on your PC.
-    1. In Visual Studio Code, on the **File** menu, select **Open Folder**.
-    1. Navigate to the Windows Desktop folder, open the **SampleApps** folder, and locate the **APL2007M2Sample1** folder.
-    1. Select **APL2007M2Sample1** and then select **Select Folder**.
+    1. PC で Visual Studio Code を開きます。
+    1. Visual Studio Code の **[ファイル]** メニューで、 **[フォルダーを開く]** を選択します。
+    1. Windows デスクトップ フォルダーに移動し、**SampleApps** フォルダーを開き、**APL2007M2Sample1** フォルダーを見つけます。
+    1. **APL2007M2Sample1** を選択し、**[フォルダーの選択]** を選択します。
 
-    The Visual Studio Code EXPLORER view should show a APL2007M2Sample1 code project containing the following files:
+    Visual Studio Code EXPLORER ビューには、次のファイルを含む APL2007M2Sample1 コード プロジェクトが表示されます:
 
     - APL2007M2Sample1.csproj
     - APL2007M2Sample1.sln
@@ -52,55 +52,55 @@ Use the following steps to complete this section of the demo:
     - MainWindow.xaml
     - MainWindow.xaml.cs
 
-1. On Visual Studio Code's top menu bar, select **Open Chat**.
+1. Visual Studio Code の上部メニュー バーにある **[チャットを開く]** を選択します。
 
-    The Open Chat button is located on the menu bar at the top of the Visual Studio Code window, just to the right of the Searchbox. It displays a small GitHub Copilot logo.
+    [チャットを開く] ボタンは、Visual Studio Code ウィンドウの上部にあるメニュー バーにあり、検索ボックスの右側に位置します。 小さな GitHub Copilot ロゴが表示されます。
 
-1. Use the following command to ask Copilot Chat to explain the `APL2007M2Sample1` project:
+1. 次のコマンドを使用して、Copilot Chat に `APL2007M2Sample1` プロジェクトの説明を依頼します:
 
     ```plaintext
     @workspace Explain this project
     ```
 
-1. Take a minute to review the response in the Chat view.
+1. チャット ビューで応答を確認するには、少し時間がかかります。
 
-    GitHub Copilot Chat generates an explanation of the APL2007M2Sample1 project that's similar to the following response:
+    GitHub Copilot Chat では、次の応答に類似した APL2007M2Sample1 プロジェクトの説明を生成します:
 
     > [!IMPORTANT]
-    > GitHub Copilot Chat uses an AI model to generate responses. The responses you receive are similar to the responses shown in this training, but they aren't identical.
+    > GitHub Copilot Chat では、AI モデルを使用して応答を生成します。 ユーザーが受け取る応答は、このトレーニングに示されている応答と似ていますが、同じではありません。
 
-1. At the bottom of the Chat view, notice that GitHub Copilot Chat has suggested a follow-up question.
+1. チャット ビューの下部で、GitHub Copilot Chat がフォローアップの質問を提案していることに注意してください。
 
-    The response you receive may include a different follow-up question.
+    受信する応答には、別のフォローアップの質問が含まれる場合があります。
 
-    GitHub Copilot Chat builds a history of your chat conversation. The history helps GitHub Copilot Chat understand your interests. As you build a chat history, the AI model learns from your interactions and provides more relevant follow-up questions. Exploring "random" follow-up questions isn't recommended.
+    GitHub Copilot Chat では、チャット会話の履歴が保持されます。 この履歴は、GitHub Copilot Chat があなたの興味を理解するのに役立ちます。 チャット履歴を作成すると、AI モデルはユーザーとの対話から学習し、より関連性の高いフォローアップの質問を提供します。 "ランダム" なフォローアップの質問を探すことはお勧めしません。
 
-1. Open the `MainWindow.xaml.cs` file in the editor.
+1. エディターで `MainWindow.xaml.cs` ファイルを開きます。
 
-1. Use the following command to ask Copilot to explain the `MainWindow.xaml.cs` file:
+1. 次のコマンドを使用して、Copilot に `MainWindow.xaml.cs` ファイルの説明を依頼します:
 
     ```plaintext
     @workspace /explain #file:MainWindow.xaml.cs
     ```
 
-1. Take a minute to review the response in the Chat view.
+1. チャット ビューで応答を確認するには、少し時間がかかります。
 
-    Notice that GitHub Copilot Chat generates a detailed explanation of the `MainWindow.xaml.cs` file. The explanation includes information about the file's purpose, structure, and key components. You may also see a section that describes potential issues and improvements.
+    GitHub Copilot Chat によって `MainWindow.xaml.cs` ファイルの詳細な説明が生成されます。 説明には、ファイルの目的、構造、および主要なコンポーネントに関する情報が含まれています。 潜在的な問題と改善点について説明するセクションが表示される場合もあります。
 
-    Once again, GitHub Copilot Chat suggests a follow-up question.
+    もう一度、GitHub Copilot Chat はフォローアップの質問を提案します。
 
     > [!IMPORTANT]
-    > GitHub Copilot Chat maintains a history of your chat conversation. As you continue to ask questions, it refines its responses accordingly. The context of your questions, especially in regard to your code project, influences GitHub Copilot Chat's subsequent responses. This helps it to provide more accurate and relevant responses. It also means the response you receive for a particular question is likely to vary based on your conversation history.
+    > GitHub Copilot Chat では、チャット会話の履歴が保持されます。 質問を続けるにつれて、それに応じて回答が絞り込まれます。 質問のコンテキスト (特にコード プロジェクトに関して) によって、GitHub Copilot Chat の後続の応答が影響を受けます。 これは、より正確で関連性の高い応答を提供するのに役立ちます。 これは、特定の質問に対して受け取る応答が、会話履歴によって異なる可能性が高いことも意味します。
 
-### Selected code explanations
+### 選択したコードの説明
 
-Even experienced developers encounter code that's difficult to understand. Rather than spending time trying to decipher complex code, you can ask GitHub Copilot Chat to provide an explanation. Chat view, inline chat, and smart actions can each be used to generate explanations for selected code lines or sections.
+経験豊富な開発者でも、理解が難しいコードに遭遇することがあります。 複雑なコードの解読に時間を費やすよりも、GitHub Copilot Chat に説明を求めたほうがよいでしょう。 チャット ビュー、インライン チャット、スマート アクションをそれぞれ使用して、選択したコード行またはセクションの説明を生成できます。
 
-In this section of the demo, you use the **Explain** smart action to generate an explanation of selected code lines.
+デモのこのセクションでは、**説明**スマート アクションを使用して、選択したコード行の説明を生成します。
 
-1. Ensure that you have the `MainWindow.xaml.cs` file open in the editor.
+1. エディターで `MainWindow.xaml.cs` が開かれていることを確認します。
 
-1. Scroll down to locate the `SumPageSizesAsync()` method.
+1. 下にスクロールして `SumPageSizesAsync()` メソッドを見つけます。
 
     ```csharp
 
@@ -124,9 +124,9 @@ In this section of the demo, you use the **Explain** smart action to generate an
 
     ```
 
-1. Select the following code lines, and then use the **Explain** smart action to generate an explanation.
+1. 次のコード行を選択し、**[説明]** スマート アクションを使用して説明を生成します。
 
-    To select the **Explain** smart action, right-click the selected code lines, select **Copilot**, and then select **Explain** from the context menu.
+    **[説明]** スマート アクションを選択するには、選択したコード行を右クリックし、**[Copilot]** を選択して、コンテキスト メニューから **[説明]** を選択します。
 
     ```csharp
 
@@ -137,88 +137,88 @@ In this section of the demo, you use the **Explain** smart action to generate an
 
     ```
 
-1. Take a minute to review the response in the Chat view.
+1. チャット ビューで応答を確認するには、少し時間がかかります。
 
-1. Notice the level of detail included in the explanation.
+1. 説明に含まれている詳細レベルを確認してください。
 
-    GitHub Copilot Chat generates detailed explanations that include information about the selected code lines, their purpose, and how they work. Responses include code snippets and natural language descriptions that help you understand the code.
+    GitHub Copilot Chat は、選択したコード行、その目的、および動作方法に関する情報を含む詳細な説明を生成します。 応答には、コード スニペットと、コードを理解するのに役立つ自然言語の説明が含まれています。
 
-### Error explanations
+### エラーの説明
 
-Managing errors is an essential aspect of software development. Some errors are easy to spot and fix, while others can be more challenging. When you encounter an error in your code that's difficult to understand, you can ask GitHub Copilot Chat to provide an explanation. For example, you can ask GitHub Copilot Chat to explain why a specific line of code is causing an error.
+エラーの管理は、ソフトウェア開発の重要な側面です。 見つけて修正するのが簡単なエラーもあれば、より難しいものもあります。 理解が難しいコードでエラーが発生した場合は、GitHub Copilot Chat に説明を求めることができます。 たとえば、GitHub Copilot Chat に、特定のコード行がエラーの原因となっている理由を説明するように依頼できます。
 
-Use the following steps to complete this section of the demo:
+以下の手順に従って、デモのこのセクションを完了します。
 
-1. Ensure that you have `MainWindow.xaml.cs` open in the editor.
+1. エディターで `MainWindow.xaml.cs` が開かれていることを確認します。
 
-1. In the `SumPageSizesAsync()` method, locate the following code line:
+1. `SumPageSizesAsync()` メソッドで、次のコード行を見つけます:
 
     ```csharp
     int[] lengths = Task.WhenAll(downloadTasks);
     ```
 
-1. Hover the mouse cursor over `downloadTasks` to display the error message.
+1. マウス カーソルを `downloadTasks` にポイントすると、エラー メッセージが表示されます。
 
-    Error messages don't always explain how to fix coding issues. When the solution isn't obvious, you can ask GitHub Copilot Chat to explain an error and suggest ways to fix it.
+    エラー メッセージに、コーディングの問題の解決方法が常に説明されているわけではありません。 解決方法が明確でない場合は、GitHub Copilot Chat にエラーの説明と、修正方法の提案を依頼することができます。
 
-1. Select the code line containing the error, and then press **Ctrl+I** to open an inline chat.
+1. エラーが含まれているコード行を選択し、**Ctrl + I** キーを押してインライン チャットを開きます。
 
-1. To generate an explanation for the error, enter the following prompt:
+1. エラーの説明を生成するには、次のプロンプトを入力します。
 
     ```plaintext
     /explain why is the selection causing an error
     ```
 
-1. Take a minute to review the response in the Chat view.
+1. チャット ビューで応答を確認するには、少し時間がかかります。
 
-    Notice that the response includes information about the error and suggestions for fixing it. In this case, GitHub Copilot Chat explains that the `Task.WhenAll(downloadTasks)` line is causing an error because it's missing the `await` keyword. The response also provides a code snippet that shows how to fix the error by adding the `await` keyword before the `Task.WhenAll(downloadTasks)` line.
+    応答には、エラーに関する情報と修正のための提案が含まれていることに注意してください。 この場合、GitHub Copilot Chat は、`await` キーワードがないために `Task.WhenAll(downloadTasks)` 行がエラーを引き起こしていることを説明しています。 応答には、`await` キーワードを `Task.WhenAll(downloadTasks)` 行の前に追加してエラーを修正する方法を示すコード スニペットも用意されています。
 
-1. Use the explanation provided by GitHub Copilot Chat to fix the error in your code.
+1. GitHub Copilot Chat で提供されている説明を使用して、コード内のエラーを修正します。
 
-    Add the `await` keyword before the `Task.WhenAll(downloadTasks)` line, as shown in the following code snippet:
+    次のコード スニペットに示すように、`await` キーワードを `Task.WhenAll(downloadTasks)` 行の前に追加します:
 
     ```csharp
     int[] lengths = await Task.WhenAll(downloadTasks);
     ```
 
-    After you make this change, the error should be resolved.
+    この変更を行った後、エラーを解決する必要があります。
 
-### New feature or functionality explanations
+### 新機能または機能の説明
 
-GitHub Copilot Chat can explain how to add new features or functionality to your project.
+GitHub Copilot Chat は、新しいフィーチャーや機能をプロジェクトに追加する方法を説明できます。
 
-Consider the APL2007M2Sample1 project. Your code downloads web pages and calculates the total size of the downloaded pages. Suppose you need to add exception handling to the application. In this section of the demo, you use GitHub Copilot Chat to explain how to manage exceptions during the download process.
+APL2007M2Sample1 プロジェクトについて考えてみましょう。 コードによって Web ページがダウンロードされ、ダウンロードされたページの合計サイズが計算されます。 アプリケーションに例外処理を追加する必要があるとします。 デモのこのセクションでは、GitHub Copilot Chat を使用して、ダウンロード プロセス中の例外を管理する方法について説明します。
 
-Use the following steps to complete this section of the demo:
+以下の手順に従って、デモのこのセクションを完了します。
 
-1. Select the code lines that include the `SumPageSizesAsync` and `ProcessUrlAsync` methods.
+1. `SumPageSizesAsync` と `ProcessUrlAsync` のメソッドを含むコード行を選択します。
 
-1. In the Chat view, to have GitHub Copilot Chat explain how to handle exceptions thrown during the download process, enter the following question:
+1. チャット ビューで、ダウンロード プロセス中にスローされた例外を処理する方法を GitHub Copilot Chat に説明させるには、次の質問を入力します:
 
     ```plaintext
     @workspace /explain #MainWindow.xaml.cs How can I handle exceptions thrown during the download process?
     ```
 
-1. Take a minute to review the response in the Chat view.
+1. チャット ビューで応答を確認するには、少し時間がかかります。
 
-    Copilot Chat generates a response that's similar to the following explanation:
+    Copilot Chat では、次の説明のような応答が生成されます:
 
-    The response provides a detailed explanation of how to handle exceptions thrown during the download process. You also get a code snippet that implements the suggested exception handling code. You can copy the code snippet or insert it into your code project at the location of the cursor.
+    応答では、ダウンロード プロセス中にスローされる例外を処理する方法について詳しく説明します。 また、推奨される例外処理コードを実装するコード スニペットも取得します。 コード スニペットをコピーするか、カーソルの位置でコード プロジェクトに挿入できます。
 
-    Rather than copying or inserting the code snippet from the Chat view, the next step investigates using the inline chat to implement the suggested exception handling code.
+    次の手順では、チャット ビューからコード スニペットをコピーしたり挿入したりするのではなく、インライン チャットを使って、推奨される例外処理コードを実装する方法について調査します。
 
-1. To ask inline chat how to implement exception handling, select the `ProcessUrlAsync` method, press **Ctrl+I**, and then enter the following prompt:
+1. 例外処理の実装方法をインライン チャットで質問するには、`ProcessUrlAsync` メソッドを選択し、**Ctrl + I** キーを押して、次のプロンプトを入力します。
 
     ```plaintext
     How can I handle exceptions thrown during the download process?
     ```
 
-1. Take a minute to review the inline response.
+1. インライン応答を確認するには、少し時間がかかります。
 
-1. To accept the proposed error handling code, select **Accept**.
+1. 提案されたエラー処理コードを受け入れるには、**[承諾]** を選択します。
 
-    Notice that the proposed `try-catch` block is implemented.
+    提案された `try-catch` ブロックが実装されていることに注意してください。
 
-### Summary
+### まとめ
 
-In this demo, you used GitHub Copilot Chat to generate explanations for code lines, errors, and new features. GitHub Copilot Chat provides a powerful set of features that can help you ramp up on new project quickly. By using the inline chat and Chat view, you can get help from GitHub Copilot Chat without leaving the Visual Studio Code environment. GitHub Copilot Chat's AI model generates accurate and useful responses that can help you become a more efficient and effective developer.
+このデモでは、GitHub Copilot Chat を使用して、コード行、エラー、および新機能の説明を生成しました。 GitHub Copilot Chat には、新しいプロジェクトをすばやく立ち上げるのに役立つ強力な機能セットが用意されています。 インライン チャットとチャット ビューを使用すると、Visual Studio Code 環境を離れることなく、GitHub Copilot Chat からヘルプを取得できます。 GitHub Copilot Chat の AI モデルは、より効率的で効果的な開発者になるのに役立つ正確で有用な応答を生成します。

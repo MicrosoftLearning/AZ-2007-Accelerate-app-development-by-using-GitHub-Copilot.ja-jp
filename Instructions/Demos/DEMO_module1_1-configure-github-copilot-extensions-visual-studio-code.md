@@ -1,113 +1,113 @@
 ---
 demo:
-    title: 'Demo: Configure GitHub Copilot extensions for Visual Studio Code'
-    module: 'Module 1: Get started with GitHub Copilot'
+  title: 'デモ:Visual Studio Code 用の GitHub Copilot 拡張機能を構成する'
+  module: 'Module 1: Get started with GitHub Copilot'
 ---
 
-# Demo: Configure GitHub Copilot extensions for Visual Studio Code
+# デモ:Visual Studio Code 用の GitHub Copilot 拡張機能を構成する
 
-## Instructions
+## 手順
 
-The demo activities are designed for an environment that includes the following resources:
+デモのアクティビティは、次のリソースを含む環境向けに設計されています。
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
+- Visual Studio Code。
+- Visual Studio Code 用の C# 開発キット拡張機能。
+- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
+- C# を使用して作成されたサンプル コード プロジェクト。
 
-**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
 
-**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
 
-### Introduce the demo
+### デモを紹介する
 
-GitHub Copilot settings are configured in your GitHub.com account and the Visual Studio Code environment. In Visual Studio Code, you access settings for GitHub Copilot and GitHub Copilot Chat using the GitHub Copilot status menu.
+GitHub Copilot の設定は、GitHub.com アカウントと Visual Studio Code 環境で構成します。 Visual Studio Code では、GitHub Copilot 状態メニューを使って、GitHub Copilot と GitHub Copilot Chat の設定にアクセスします。
 
-The settings in Visual Studio Code allow you to enable or disable GitHub Copilot for specific languages, configure the behavior of GitHub Copilot Chat, and customize the GitHub Copilot experience to suit your preferences. You can also configure GitHub Copilot settings on GitHub.com to manage your GitHub Copilot subscription, configure the retention of prompts and suggestions, and allow or block suggestions matching public code.
+Visual Studio Code の設定を使用すると、特定の言語に対して GitHub Copilot を有効または無効にしたり、GitHub Copilot Chat の動作を構成したり、好みに合わせて GitHub Copilot エクスペリエンスをカスタマイズしたりできます。 また、GitHub.com で GitHub Copilot の設定を構成して、GitHub Copilot サブスクリプションを管理したり、プロンプトと提案の保持を構成したり、パブリック コードに一致する提案を許可またはブロックしたりすることもできます。
 
-## Enable or disable GitHub Copilot
+## GitHub Copilot を有効または無効にする
 
-GitHub Copilot is enabled by default when you install the extension in Visual Studio Code. You can disable GitHub Copilot for a period of time if you need to.
+Visual Studio Code に拡張機能をインストールすると、GitHub Copilot が既定で有効になります。 必要に応じて、GitHub Copilot を一定期間無効にすることができます。
 
-To show the enable and disable options for the GitHub Copilot extension, follow these steps:
+GitHub Copilot 拡張機能の有効化と無効化のオプションを表示するには、次の手順に従います。
 
-1. In Visual Studio Code, open the **Extensions** view.
+1. Visual Studio Code で、**[拡張機能]** ビューを開きます。
 
-1. In the list of installed extensions, scroll down until you find **GitHub Copilot**.
+1. インストールされている拡張機能の一覧で、**GitHub Copilot** が見つかるまで下にスクロールします。
 
-1. To display a dropdown menu for the GitHub Copilot extension that lists Enable and Disable options, select on the gear icon next to GitHub Copilot.
+1. [有効化] と [無効化] のオプションを一覧表示する GitHub Copilot 拡張機能のドロップダウン メニューを表示するには、GitHub Copilot の横にある歯車アイコンを選択します。
 
-If you want to demonstrate the enable/disable options, you can select the disable option. However, be sure to re-enable GitHub Copilot before you continue with this demo.
+有効化/無効化オプションのデモを行う場合は、無効化オプションを選択できます。 ただし、このデモを続行する前に、必ず GitHub Copilot を再度有効にしてください。
 
-## Configure GitHub Copilot and Copilot Chat in Visual Studio Code
+## Visual Studio Code で GitHub Copilot と Copilot Chat を構成する
 
-The GitHub Copilot extensions are configured with default settings when you install the extensions in Visual Studio Code. You can customize these settings to suit your preferences.
+GitHub Copilot 拡張機能は、Visual Studio Code に拡張機能をインストールするときに既定の設定で構成されます。 これらの設定は、ご自分の好みに合わせてカスタマイズできます。
 
-Visual Studio Code provides two ways to access the settings for the GitHub Copilot extensions:
+Visual Studio Code には、GitHub Copilot 拡張機能の設定にアクセスするための次の 2 つの方法が用意されています。
 
-- You can use `Manage` icon to open the Visual Studio Code Settings tab. On the Settings tab, you can select **Extensions** and then select **Copilot**.
-- You can use the GitHub Copilot status icon to access the GitHub Copilot status menu and then select **Edit Settings**.
+- `Manage` アイコンを使って Visual Studio Code の [設定] タブを開くことができます。[設定] タブで **[拡張機能]** を選択し、次に **[Copilot]** を選択できます。
+- GitHub Copilot 状態アイコンを使って GitHub Copilot 状態メニューにアクセスし、**[設定の編集]** を選択できます。
 
-Demonstrate using the GitHub Copilot status menu to access settings. This opens the Visual Studio Code Settings tab with settings filtered for GitHub Copilot. Using the status menu is the quickest way to access the settings for the GitHub Copilot extensions.
+GitHub Copilot 状態メニューを使用して設定にアクセスする方法を示します。 これにより、Visual Studio Code の [設定] タブが開き、GitHub Copilot 用にフィルター処理された設定が表示されます。 GitHub Copilot 拡張機能の設定にアクセスするには、状態メニューを使用するのが最も簡単な方法です。
 
-### Configure GitHub Copilot settings
+### GitHub Copilot の設定を構成する
 
-To show the configuration settings for GitHub Copilot, follow these steps:
+GitHub Copilot の構成設定を表示するには、次の手順に従います。
 
-1. On the bottom panel of the Visual Studio Code window, to open the GitHub Copilot status menu, select the GitHub Copilot status icon.
+1. GitHub Copilot 状態メニューを開くには、Visual Studio Code ウィンドウの下部パネルで GitHub Copilot 状態アイコンを選択します。
 
-    The GitHub Copilot status icon indicates whether GitHub Copilot is enabled or disabled. When enabled, the background color of the icon matches the color of the status bar. When disabled, the background color of the icon contrasts with the color of the status bar.
+    GitHub Copilot 状態アイコンは、GitHub Copilot が有効か無効かを示します。 有効にすると、アイコンの背景色がステータス バーの色と一致します。 無効にすると、アイコンの背景色がステータス バーの色と対照的な色になります。
 
-1. In the GitHub Copilot status menu, select **Edit Settings**.
+1. GitHub Copilot 状態メニューで、**[設定の編集]** を選択します。
 
-1. Take a minute to review the list of available settings.
+1. ここで、使用可能な設定の一覧を確認してください。
 
-    Notice that the settings for both GitHub Copilot and GitHub Copilot Chat are listed. Also, under the Extensions label on the left, both extensions are labeled as Copilot. The first Copilot extension is for GitHub Copilot and the second is for GitHub Copilot Chat.
+    GitHub Copilot と GitHub Copilot Chat の両方の設定が一覧表示されていることに注意してください。 また、左側の [拡張機能] ラベルでは、両方の拡張機能に "Copilot" というラベルが付いています。 最初の Copilot 拡張機能は GitHub Copilot 用で、2 つ目は GitHub Copilot Chat 用です。
 
-1. Under the Extensions label, select the first Copilot extension.
+1. [拡張機能] ラベルで、最初の Copilot 拡張機能を選択します。
 
-    Notice that the settings list is now filtered for GitHub Copilot only.
+    設定の一覧が GitHub Copilot 用にのみフィルター処理されていることに注意してください。
 
-    The settings for GitHub Copilot include the following options:
+    GitHub Copilot の設定には、次のオプションがあります。
 
-    - Enable Auto Completions
-    - Enable or disable Copilot completions for specified languages
+    - [Enable Auto Completions] (オートコンプリートを有効にする)
+    - [Enable or disable Copilot completions for specified languages] (指定した言語の Copilot 入力候補を有効または無効にする)
 
-1. Take a minute to review the settings for **Enable or disable Copilot completions for specified languages**.
+1. ここで、**[Enable or disable Copilot completions for specified languages] (指定した言語の Copilot 入力候補を有効または無効にする)** の設定を確認してください。
 
-    Notice that the settings for this option are configured using a list of languages and a value of **true** or **false** to enable or disable GitHub Copilot for each language. By default, GitHub Copilot is enabled for all languages. This setting is specified with the wildcard character `*` on the first row and the value **true**. The subsequent rows specify languages for which GitHub Copilot is enabled or disabled. For example, GitHub Copilot is enabled for **C#**, **JavaScript**, and **Python** and disabled for **Plaintext** and **Markdown**.
+    このオプションの設定は、言語ごとに GitHub Copilot を有効または無効にするために、言語の一覧と **true** または **false**の値を使用して構成されていることに注意してください。 既定では、GitHub Copilot はすべての言語で有効になっています。 この設定では、最初の行にワイルドカード文字 `*` が使用され、**true** の値が指定されています。 後続の行では、GitHub Copilot が有効または無効になっている言語を指定します。 たとえば、GitHub Copilot を **C#**、**JavaScript**、**Python** で有効化し、**Plaintext** と **Markdown** で無効化するなどです。
 
-1. Under **Enable or disable Copilot completions for specified languages**, select **markdown**.
+1. **[Enable or disable Copilot completions for specified languages] (指定した言語の Copilot 入力候補を有効または無効にする)** で、**[markdown]** を選択します。
 
-    Notice that the value for Markdown is set to **false**. This means that GitHub Copilot is disabled for Markdown files.
+    Markdown の値が **false** に設定されていることに注意してください。 これは、Markdown ファイルに対して GitHub Copilot が無効になっていることを意味します。
 
-1. To enable Copilot for Markdown files, select **Edit Item** (pencil icon), select **false**, change the value to **true**, and then select **OK**.
+1. Markdown ファイルに対して Copilot を有効にするには、**[項目の編集]** (鉛筆アイコン) を選択し、**[false]** を選択して、値を **[true]** に変更してから **[OK]** を選択します。
 
-    You can now use GitHub Copilot document projects using Markdown files.
+    Markdown ファイルを使って GitHub Copilot ドキュメント プロジェクトを使用できるようになりました。
 
-1. Under the Extensions label, select the second Copilot extension.
+1. [拡張機能] ラベルで、2 番目の Copilot 拡張機能を選びます。
 
-    Notice that the settings list is now filtered for GitHub Copilot Chat only.
+    設定の一覧が GitHub Copilot Chat 用にのみフィルター処理されていることに注意してください。
 
-    The settings for GitHub Copilot Chat include **Preview** and **Experimental** options. Setting choices include the following options:
+    GitHub Copilot Chat の設定には、**プレビュー**および**試験的な**オプションがあります。 設定の選択肢には次のオプションがあります。
 
-    - **Fix Test Failure**: This option is enabled by default so that GitHub Copilot can provide suggestions for fixing test failures.
-    - **Follow Ups**: By default, this setting is set to **firstOnly**, which means that GitHub Copilot provides follow-up suggestions only after the first suggestion. The other options are **always** and **never**.
-    - **Local Override**: By default, this option is set to **auto**, which means that GitHub Copilot uses the locale of the Visual Studio Code display language.
-    - **Scope Selection**: This option is disabled by default. When enabled, the user is prompted for a scope symbol when the user uses `/explain` in Chat without anything selected in the Editor.
-    - **Terminal Chat Location**: The default setting is chatView, which specifies the Chat View. The other options are for the Quick Chat area and the Terminal.
-    - **Use Project Templates**: This option is enabled by default so that GitHub Copilot uses relevant GitHub project templates when the user uses `/new` in Chat.
-    - **Enable Code Actions**: This option is enabled by default so that GitHub Copilot can provide code actions in the Editor.
-    - **Trigger Automatically**: This option is enabled by default so that GitHub Copilot suggestions are shown automatically as you type.
+    - **Fix Test Failure**:このオプションは既定で有効になっており、GitHub Copilot はテスト エラーの修正候補を表示できます。
+    - **Follow Ups**:既定では、この設定は **[firstOnly]** に設定されており、GitHub Copilot は最初の候補の後にのみフォローアップ候補を表示します。 その他のオプションには、**[always]** と **[never]** があります。
+    - **Local Override**:既定では、このオプションは **auto** に設定されており、GitHub Copilot は Visual Studio Code の表示言語のロケールを使用します。
+    - **Scope Selection**:既定では、このオプションは無効になっています。 有効にすると、ユーザーは、エディターで何も選択されていない状態で `/explain` をチャットで使用すると、スコープ記号を入力するよう求められます。
+    - **Terminal Chat Location**:既定の設定は [chatView] で、チャット ビューを指定します。 その他には、クイック チャット領域とターミナル用のオプションがあります。
+    - **Use Project Templates**:このオプションは既定で有効になっており、ユーザーがチャットで `/new` を使用するときに、GitHub Copilot で関連する GitHub プロジェクト テンプレートが使用されます。
+    - **Enable Code Actions**:このオプションは、GitHub Copilot がエディターでコード アクションを提供できるように、既定で有効になっています。
+    - **Trigger Automatically**:このオプションは既定で有効になっており、入力時に GitHub Copilot の提案が自動的に表示されます。
 
-    We recommend keeping the default settings during this training. This helps to ensure that you have the expected experience when working on the modules in this learning path. When you have completed the training, you can experiment with these settings to customize your experience with GitHub Copilot and Copilot Chat.
+    このトレーニングの間は、既定の設定のままにすることをお勧めします。 これは、このラーニング パスのモジュールに取り組む際に期待されるエクスペリエンスを確保するのに役立ちます。 トレーニングを修了した後に、これらの設定の変更を試しながら GitHub Copilot と Copilot Chat のエクスペリエンスをカスタマイズしてみてください。
 
-## Configure GitHub Copilot settings on GitHub.com
+## GitHub.com で GitHub Copilot の設定を構成する
 
-Your GitHub account settings on GitHub.com include options for configuring GitHub Copilot. These settings are used to manage your GitHub Copilot subscription, configure the retention of prompts and suggestions, and allow or block suggestions matching public code.
+GitHub.com の GitHub アカウント設定には、GitHub Copilot を構成するためのオプションが含まれています。 これらの設定を使って、GitHub Copilot サブスクリプションを管理したり、プロンプトと提案の保持を構成したり、パブリック コードに一致する提案を許可またはブロックしたりします。
 
-GitHub Copilot can be managed through personal accounts with GitHub Copilot Individual or through organization accounts with GitHub Copilot Business/Enterprise.
+GitHub Copilot は、GitHub Copilot Individual では個人用アカウントを通じて、GitHub Copilot Business/Enterprise では組織アカウントを通じて管理できます。
 
-## Keyboard shortcuts for GitHub Copilot
+## GitHub Copilot のキーボード ショートカット
 
-You can use the default keyboard shortcuts in Visual Studio Code when using GitHub Copilot. Alternatively, you can rebind the shortcuts in the Keyboard Shortcuts editor using your preferred keyboard shortcuts for each specific command.
+GitHub Copilot を使うときに、Visual Studio Code で既定のキーボード ショートカットを使用できます。 または、キーボード ショートカット エディターで、特定のコマンドごとに好みのキーボード ショートカットを使い、ショートカットを再バインドすることもできます。
