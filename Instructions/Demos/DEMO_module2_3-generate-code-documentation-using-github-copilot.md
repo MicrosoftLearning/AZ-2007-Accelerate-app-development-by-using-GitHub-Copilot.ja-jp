@@ -1,59 +1,59 @@
 ---
 demo:
-    title: 'Demo: Generate inline code documentation by using GitHub Copilot Chat'
-    module: 'Module 2: Generate documentation using GitHub Copilot tools'
+  title: 'デモ:GitHub Copilot Chat を使用してインライン コード ドキュメントを生成する'
+  module: 'Module 2: Generate documentation using GitHub Copilot tools'
 ---
 
-# Demo: Generate inline code documentation by using GitHub Copilot Chat
+# デモ:GitHub Copilot Chat を使用してインライン コード ドキュメントを生成する
 
-## Instructions
+## 手順
 
-The demo activities are designed for an environment that includes the following resources:
+デモのアクティビティは、次のリソースを含む環境向けに設計されています。
 
-- Visual Studio Code.
-- The C# Dev Kit extension for Visual Studio Code.
-- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
-- Sample code projects created using C#.
+- Visual Studio Code。
+- Visual Studio Code 用の C# 開発キット拡張機能。
+- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
+- C# を使用して作成されたサンプル コード プロジェクト。
 
-**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
+**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
 
-**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
+**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
 
-### Introduce the demo
+### デモを紹介する
 
-Documenting your code is an important aspect of the software development process. Inline documentation (code comments) help developers understand the codebase, its purpose, and how to use it.
+コードのドキュメント化は、ソフトウェア開発プロセスの重要な側面です。 インライン ドキュメント (コード コメント) は、開発者がコードベース、その目的、使用方法について理解するのに役立ちます。
 
-GitHub Copilot Chat can help you document your code quickly and accurately. You have a few options for generating inline documentation using GitHub Copilot Chat:
+GitHub Copilot Chat は、コードを迅速かつ正確に文書化するのに役立ちます。 GitHub Copilot Chat を使用してインライン ドキュメントを生成するためのオプションがいくつか用意されています。
 
-- Construct your own natural language prompt that can be used to generate specific documentation.
-- Use the `/doc` command during an inline chat session to generate comments for selected code.
-- Use the **Generate Docs** smart action to generate comments for selected code.
+- 特定のドキュメントを生成するのに使用できる独自の自然言語プロンプトを作成します。
+- インライン チャット セッション中に `/doc` コマンドを使用して、選択したコードに関するコメントを生成します。
+- **[ドキュメントの生成]** スマート アクションを使用して、選択したコードに関するコメントを生成します。
 
-Properly documenting your code creates a more readable and maintainable codebase that's easier for other developers to understand and work with.
+コードを適切に文書化すると、読みやすく保守しやすいコードベースが作成され、他の開発者が理解して操作しやすくなります。
 
-### Generate inline code documentation using the Chat view
+### チャット ビューを使用してインライン コード ドキュメントを生成する
 
-In this demonstration, you use GitHub Copilot Chat to generate inline code documentation for the `APL2007M2Sample1` project.
+このデモでは、GitHub Copilot Chat を使用して、`APL2007M2Sample1` プロジェクトのインライン コード ドキュメントを生成します。
 
-Use the following steps to complete this section of the demo:
+以下の手順に従って、デモのこのセクションを完了します。
 
-1. Ensure that you have the `APL2007M2Sample1` project open in Visual Studio Code.
+1. Visual Studio Code で `APL2007M2Sample1` プロジェクトを開いていることを確認します。
 
-1. Open the `MainWindow.xaml.cs` file.
+1. `MainWindow.xaml.cs` ファイルを開きます。
 
-1. Select all of the code starting from the namespace declaration to the end of the file.
+1. 名前空間宣言からファイルの末尾までのすべてのコードを選択します。
 
-1. Open the Chat view.
+1. チャット ビューを開きます。
 
-1. To see how GitHub Copilot Chat would document the selected code, enter the following prompt:
+1. GitHub Copilot Chat で選択したコードがどのように文書化されるかを確認するには、次のプロンプトを入力します。
 
     ```output
     @workspace #selection generate inline code documentation for the selected code
     ```
 
-1. Take a minute to review the suggested code documentation.
+1. 少し時間を取って、提案されたコード ドキュメントを確認します。
 
-    The generated response should look similar to the following code sample:
+    生成される応答は、次のコード サンプルのようになるはずです。
 
     ```csharp
 
@@ -165,56 +165,56 @@ Use the following steps to complete this section of the demo:
 
     ```
 
-    The response includes suggested code comments and *a portion* of the associated code. Some of your code may be omitted for brevity. You could manually move code comments into the actual code file.
+    応答には、推奨されるコード コメントと、関連付けられているコードの*一部*が含まれます。 簡潔にするために、コードの一部が省略される場合があります。 コード コメントを実際のコード ファイルに手動で移動できます。
 
-    Inline chat provides a more direct approach for adding comments to your code.
+    インライン チャットでは、より直接的な方法でコードにコメントを追加できます。
 
-### Generate inline code documentation using inline chat
+### インライン チャットを使用してインライン コード ドキュメントを生成する
 
-1. Scroll to the top of the `MainWindow.xaml.cs` file.
+1. `MainWindow.xaml.cs` ファイルの先頭まで上にスクロールします。
 
-1. Select the `OnStartButtonClick` method.
+1. `OnStartButtonClick` メソッドを選択します。
 
-1. To open an inline chat, press **Ctrl+I**.
+1. インライン チャットを開くには、**Ctrl + I** キーを押します。
 
-1. To generate inline documentation for the `OnStartButtonClick` method, enter the following prompt:
+1. `OnStartButtonClick` メソッドのインライン ドキュメントを生成するには、次のプロンプトを入力します。
 
     ```output
     /doc
     ```
 
-1. Take a minute to review the code documentation generated.
+1. 少し時間を取って、生成されたコード ドキュメントを確認します。
 
-    Notice that the suggested documentation for the `OnStartButtonClick` method includes a summary and descriptions of the two parameters. When a method includes a return value, a description of the return value is also included.
-
-    > [!IMPORTANT]
-    > Always review the GitHub Copilot's suggested updates before accepting. If you discover an issue in a suggested code update, you can either discard the update or attempt to correct the issue before accepting the suggested code update.
-
-1. To discard the suggested update, select **Discard**.
-
-    In the next section, you generate documentation for all of the methods at once.
-
-### Generate inline code documentation using the **Generate Docs** smart action
-
-The **Generate Docs** smart action is another way to generate inline code documentation. You can use this smart action to generate comments that describe the selected code.
-
-Use the following steps to complete this section of the demo:
-
-1. In the Visual Studio Code editor, select all of the methods *inside* the `MainWindow` class.
-
-1. Right-click the selected code, select **Copilot**, and then select **Generate Docs**.
-
-    Wait for the documentation to be generated.
-
-1. Review the suggested changes.
+    `OnStartButtonClick` メソッドの推奨されるドキュメントには、2 つのパラメーターの概要と説明が含まれていることに注意してください。 メソッドに戻り値が含まれている場合は、戻り値の説明も含まれます。
 
     > [!IMPORTANT]
-    > If you find issues in the generated documentation, modify the suggested changes before continuing.
+    > 受け入れる前に、GitHub Copilot の推奨される更新を常に確認してください。 推奨されるコード更新で問題が検出された場合は、更新プログラムを破棄するか、推奨されるコード更新を受け入れる前に問題の修正を試みることができます。
 
-1. Select **Accept**.
+1. 推奨される更新を破棄するには、**[破棄する]** を選択します。
 
-    Each of the methods in the `MainWindow` class now includes generated comments.
+    次のセクションでは、すべてのメソッドのドキュメントを一度に生成します。
 
-### Summary
+### **Generate Docs** スマート アクションを使用してインライン コード ドキュメントを生成する
 
-In this demo, you used GitHub Copilot Chat to generate inline code documentation for the `APL2007M2Sample1` app. You learned how to generate inline code documentation using the Chat view, inline chat, and the **Generate Docs** smart action. By generating code comments, you can create a more readable and maintainable codebase that's easier for other developers to understand and work with. Inline code documentation is an essential part of software development that helps developers understand the codebase, its purpose, and how to use it.
+**ドキュメントの生成**スマート アクションは、インライン コード ドキュメントを生成するもう 1 つの方法です。 このスマート アクションを使用すると、選択されたコードを説明するコメントを生成できます。
+
+以下の手順に従って、デモのこのセクションを完了します。
+
+1. Visual Studio Code エディターで、`MainWindow` クラス*内の*すべてのメソッドを選択します。
+
+1. 選んだコードを右クリックし、**[Copilot]** を選んでから **[ドキュメントの生成]** を選びます。
+
+    ドキュメントが生成されるまで待ちます。
+
+1. 推奨される変更を確認します。
+
+    > [!IMPORTANT]
+    > 生成されたドキュメントで問題が見つかった場合は、続行する前に、推奨される変更を変更してください。
+
+1. **[Accept](承認)** を選択します。
+
+    `MainWindow` クラス内の各メソッドに、生成されたコメントが含まれるようになりました。
+
+### まとめ
+
+このデモでは、GitHub Copilot Chat を使用して、`APL2007M2Sample1` アプリのインライン コード ドキュメントを生成しました。 チャット ビュー、インライン チャット、**Generate Docs** スマート アクションを使用してインライン コード ドキュメントを生成する方法について説明しました。 コード コメントを生成することで、他の開発者が理解して操作しやすい、より読みやすく保守しやすいコードベースを作成できます。 インライン コード ドキュメントは、開発者がコードベース、その目的、使用方法を理解するのに役立つ、ソフトウェア開発の重要な部分です。
