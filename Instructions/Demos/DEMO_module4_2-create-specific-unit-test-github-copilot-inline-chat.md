@@ -1,45 +1,45 @@
 ---
 demo:
-  title: 'デモ:GitHub Copilot を使用して特定の条件に対する単体テストを作成する'
-  module: 'Module 4: Develop unit tests using GitHub Copilot tools'
+    title: 'Demo: Create unit tests for specific conditions by using GitHub Copilot'
+    module: 'Module 4: Develop unit tests using GitHub Copilot tools'
 ---
 
-# デモ:GitHub Copilot を使用して特定の条件に対する単体テストを作成する
+# Demo: Create unit tests for specific conditions by using GitHub Copilot
 
-## 手順
+## Instructions
 
-デモのアクティビティは、次のリソースを含む環境向けに設計されています。
+The demo activities are designed for an environment that includes the following resources:
 
-- Visual Studio Code。
-- Visual Studio Code 用の C# 開発キット拡張機能。
-- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
-- C# を使用して作成されたサンプル コード プロジェクト。
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
 
-**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
 
-**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
 
-### デモを紹介する
+### Introduce the demo
 
-GitHub Copilot 拡張機能は、コード内の特定の条件の単体テストを作成するのに役立ちます。 たとえば、GitHub Copilot チャットを使用して、特定の入力を受け取ったときにメソッドの動作をテストできます。
+The GitHub Copilot extensions can help you to create unit tests for specific conditions in your code. For example, you can use GitHub Copilot Chat to test the behavior of a method when it receives specific input.
 
-このデモでは、GitHub Copilot 拡張機能を使用して、特定の条件の単体テストを作成します。
+In this demonstration, you use the GitHub Copilot extensions to create unit tests for specific conditions.
 
-### GitHub Copilot を使用して単体テストを作成する
+### Create unit tests using GitHub Copilot
 
-GitHub Copilot オートコンプリートの提案を使用して単体テストを作成できます。 オートコンプリートの提案を使用すると、コードの単体テストをすばやく生成するのに役立ちます。
+You can create unit tests using GitHub Copilot autocompletion suggestions. Using autocompletion suggestions can help you to quickly generate unit tests for your code.
 
-デモのこのセクションでは、GitHub Copilot を使用して、`PrimeService` クラスの `IsPrime` メソッドの単体テストを作成します。
+In this section of the demo, you use GitHub Copilot to create unit tests for the `IsPrime` method of the `PrimeService` class.
 
-以下の手順に従って、デモのこのセクションを完了します。
+Use the following steps to complete this section of the demo:
 
-1. Visual Studio Code 内で **APL2007M4PrimeService-UnitTests** プロジェクト フォルダーを開きます。
+1. Open the **APL2007M4PrimeService-UnitTests** project folder in Visual Studio Code.
 
-1. エディターでPrimeServiceTests.cs ファイルを開きます。
+1. Open the PrimeServiceTests.cs file in the editor.
 
-1. `PrimeServiceTests` クラス内のすべてのコードを削除します。
+1. Delete all of the code inside the `PrimeServiceTests` class.
 
-    PrimeServiceTests.cs ファイルの内容は、次のコード スニペットのようになります。
+    The contents of the PrimeServiceTests.cs file should resemble the following code snippet:
 
     ```csharp
 
@@ -50,17 +50,17 @@ GitHub Copilot オートコンプリートの提案を使用して単体テス�
 
     ```
 
-1. PrimeServiceTests.cs ファイルを保存し、ソリューションをリビルドします。
+1. Save the PrimeServiceTests.cs file, and then rebuild the solution.
 
-1. GitHub Copilot にインライン入力候補を生成させるには、`PrimeServiceTests` クラス内に空白行を作成します。
+1. To have GitHub Copilot generate an inline completion, create a blank line inside the `PrimeServiceTests` class.
 
-    1 - 2 秒待つと、GitHub Copilot によって `PrimeServiceTests` クラス用の入力候補が提案されます。
+    If you wait a second or two, GitHub Copilot suggests a completion for the `PrimeServiceTests` class.
 
-1. **[承諾]** を選択し、GitHub Copilot によって生成された単体テストを確認します。
+1. Select **Accept**, and the take a minute to review the unit tests generated by GitHub Copilot.
 
-1. 少し時間をとって、GitHub Copilot が `IsPrime` メソッド用に生成した単体テストのコレクションを確認してください。
+1. Take a minute to review the collection of unit tests that GitHub Copilot generated for the `IsPrime` method.
 
-    デモの次のセクションでは、GitHub Copilot Chat を使用して、テストする必要がある追加のエッジ ケースを提案するように GitHub Copilot に依頼する方法を示します。
+    The next section of the demo shows how to use GitHub Copilot Chat to ask GitHub Copilot to suggest additional edge cases that should be tested.
 
     ```csharp
 
@@ -118,21 +118,21 @@ GitHub Copilot オートコンプリートの提案を使用して単体テス�
 
     ```
 
-### GitHub Copilot と GitHub Copilot チャットを使用して特定の条件の単体テストを作成する
+### Create unit tests for specific conditions using GitHub Copilot and GitHub Copilot Chat
 
-1. `PrimeServiceTests` クラスの内容を選択します。
+1. Select the contents of the `PrimeServiceTests` class.
 
-1. チャット ビューを開きます。
+1. Open the Chat view.
 
-1. PrimeService.cs ファイルをチャット ビュー コンテキストに追加するには、エクスプローラー ビューからチャット ビューに PrimeService.cs ファイルをドラッグ アンド ドロップします。
+1. To add the PrimeService.cs file to the Chat view context, drag-and-drop the PrimeService.cs file from the Explorer view into the Chat view.
 
-1. チャット ビューで次のプロンプトを入力します。
+1. Enter the following prompt in the Chat view:
 
     ```plaintext
     @workspace #selection are there any edge cases that should also be tested 
     ```
 
-1. 少し時間をとって、GitHub Copilot から提供された提案を確認してください。
+1. Take a minute to review the suggestions provided by GitHub Copilot.
 
     ```plaintext
     Yes, there are a few edge cases that should also be tested:
@@ -203,30 +203,30 @@ GitHub Copilot オートコンプリートの提案を使用して単体テス�
 
     ```
 
-1. `PrimeServiceTests` クラス内の最後のテスト メソッドの後に空白行を作成します。
+1. Create a blank line after the last test method in the `PrimeServiceTests` class.
 
-1. チャット ビュー内で、コード スニペットの上をマウスでポイントし、それから **[カーソルに挿入]** を選択します。
+1. In the Chat view, hover the mouse over the code snippet, and then select **Insert at Cursor**.
 
-1. PrimeServiceTests.cs ファイルを保存し、ソリューションをリビルドします。
+1. Save the PrimeServiceTests.cs file, and then rebuild the solution.
 
-1. 少し時間をとって、GitHub Copilot が `IsPrime` メソッド用に生成した単体テストのコレクションを確認してください。
+1. Take a minute to review the collection of unit tests that GitHub Copilot generated for the `IsPrime` method.
 
-    これまでのように、GitHub Copilot が実行した作業を確認し、テストが有効であること、およびそれらにテストするエッジ ケースが含まれているのを確認することが重要です。 テスト内容に納得したら、それらを実行して合格することを確認しましょう。
+    As always, it's important to review the work completed by GitHub Copilot to ensure that the tests are valid and that they cover the edge cases that you want to test. Once you're satisfied with the tests, you can run them to verify that they pass.
 
-1. 緑の "テスト矢印" のいずれかをマウスでポイントします。
+1. Hover the mouse pointer over one of the green "test arrows".
 
-    クリックしてテストを実行するか、右クリックして他のオプションを表示できることを示すヒント メッセージに注目してください。
+    Notice the tooltip message telling you that you can either click to run the test, or right-click to see more options.
 
-1. 緑の "テスト矢印" のいずれかを右クリックします。
+1. Right-click one of the green "test arrows".
 
-1. **[テスト エクスプローラーで表示]** を選択します。
+1. Select **Reveal in Test Explorer**.
 
-    [テスト エクスプローラー] ビューが開くことに注目してください。 [テスト エクスプローラー] ビューは、テストの実行とデバッグ、およびテストの実行結果の表示に使用できます。 [テスト エクスプローラー] ビューを手動で開くには、Visual Studio Code ウィンドウの左側にあるアクティビティ バーから **[テスト]** を選択します。 **[テスト]** ビューのアイコンは、実験室のフラスコのように見えるものです。
+    Notice that the Test Explorer view opens. The Test Explorer view can be used to run and debug tests, and to view the results of test runs. To open the Test Explorer view manually, select **Testing** from the Activity Bar on the left side of the Visual Studio Code window. The icon for the **Testing** view is the one that looks like a lab flask.
 
-1. [テスト エクスプローラー] ビューの上部にある **[テストの実行]** を選択します。
+1. At the top of the Test Explorer view, select **Run Tests**.
 
-    数秒後、[テスト エクスプローラー] にそのテストの実行結果が表示されます。 すべてのテストに合格したことがわかるはずです。 テスト エクスプローラー内と、エディター内の単体テストの左側にある緑色のチェックマークは、テストに合格したことを示します。
+    After a few seconds, the Test Explorer shows the results of the test run. You should see that all of the tests pass. Green checkmarks in the Test Explorer and to the left of the unit tests in the Editor indicate that the test passed.
 
-### まとめ
+### Summary
 
-このデモでは、GitHub Copilot と GitHub Copilot Chat を使用して、`PrimeService` クラスでの特定の条件に対する単体テストを作成しました。 コード行の入力候補を使用してアサーションを生成し、関数の入力パラメーターが有効であることを確認しました。そしてチャット ビューを使用し、テストする必要がある追加のエッジ ケースを GitHub Copilot に提案してもらいました。 GitHub Copilot から提供された提案を確認し、それらのテストを実行して合格したことを確認しました。 Visual Studio Code 内でテスト エクスプローラーを使用し、テストの実行を動かして、結果を表示する方法についても確認しました。
+In this demo, you used GitHub Copilot and GitHub Copilot Chat to create unit tests for specific conditions in the `PrimeService` class. You used code line completions to generate assertions to ensure that function input parameters are valid, and you used the Chat view to ask GitHub Copilot to suggest additional edge cases that should be tested. You reviewed the suggestions provided by GitHub Copilot and ran the tests to verify that they pass. You also learned how to use the Test Explorer in Visual Studio Code to run and view the results of test runs.

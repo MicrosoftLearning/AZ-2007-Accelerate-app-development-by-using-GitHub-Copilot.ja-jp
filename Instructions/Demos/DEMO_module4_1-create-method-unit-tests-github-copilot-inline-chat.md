@@ -1,77 +1,77 @@
 ---
 demo:
-  title: 'デモ:GitHub Copilot Chat を使用して単体テストを作成する'
-  module: 'Module 4: Develop unit tests using GitHub Copilot tools'
+    title: 'Demo: Create unit tests by using GitHub Copilot Chat'
+    module: 'Module 4: Develop unit tests using GitHub Copilot tools'
 ---
 
-# デモ:GitHub Copilot Chat を使用して単体テストを作成する
+# Demo: Create unit tests by using GitHub Copilot Chat
 
-## 手順
+## Instructions
 
-デモのアクティビティは、次のリソースを含む環境向けに設計されています。
+The demo activities are designed for an environment that includes the following resources:
 
-- Visual Studio Code。
-- Visual Studio Code 用の C# 開発キット拡張機能。
-- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
-- C# を使用して作成されたサンプル コード プロジェクト。
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
 
-**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
 
-**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
 
-### デモを紹介する
+### Introduce the demo
 
-Visual Studio Code と C# 開発キットには、C# プロジェクトの単体テストの作成と管理に役立つ豊富な機能が用意されています。 C# 開発キットを使用して、プロジェクトのテストの有効化、テスト フレームワーク パッケージの追加、単体テストの実行と管理、単体テスト ケースの生成を行うことができます。
+Visual Studio Code and the C# Dev Kit provide a rich set of features to help you create and manage unit tests for your C# projects. You can enable testing for your project, add test framework packages, run and manage unit tests, and generate unit test cases using the C# Dev Kit.
 
-GitHub Copilot は、インライン チャットで候補を提案して、コードの単体テストの生成をサポートします。
+GitHub Copilot can help you generate unit tests for your code by providing inline chat suggestions.
 
-このデモでは、Visual Studio Code で GitHub Copilot チャットを使用して、コード プロジェクトの単体テストを作成します。
+In this demonstration, you create unit tests for a code project by using GitHub Copilot Chat in Visual Studio Code.
 
-### 単体テスト用の xUnit テスト プロジェクトを作成する
+### Create an xUnit test project for your unit tests
 
-単体テスト プロジェクトは、通常、テストするプロジェクトとは別のフォルダーに作成します。 この分離により、テスト コードを運用コードから分離することができます。 このデモでは、APL2007M4PrimeService プロジェクトの xUnit テスト プロジェクトを作成します。
+Unit test projects are typically created in a folder that's separate from the project that you're testing. This separation helps to keep the test code separate from the production code. In this demo, you create an xUnit test project for the APL2007M4PrimeService project.
 
-新しい xUnit テスト プロジェクトを作成するには、次の手順を行います。
+To create a new xUnit test project, complete the following steps:
 
-1. Visual Studio Code で **APL2007M4PrimeService** フォルダーを開きます。
+1. Open the **APL2007M4PrimeService** folder in Visual Studio Code.
 
-1. Visual Studio Code で ソリューション エクスプローラー ビューを開きます。
+1. Open the Solution Explorer view in Visual Studio Code.
 
-    ソリューション エクスプローラー ビューには、Visual Studio Code のサイド バー パネルからアクセスできます。 ソリューション エクスプローラーはエクスプローラー ビューに似ていますが、一般的なファイル システムではなく、Visual Studio Code プロジェクトを操作するように特別に設計されています。
+    The Solution Explorer view is accessible from Visual Studio Code's Side Bar panel. The Solution Explorer is similar to the Explorer view, but it's specifically designed to work with Visual Studio Code projects rather than general file systems.
 
-1. ソリューション エクスプローラー ビューで **[APL2007M4PrimeService]** を右クリックし、**[新しいプロジェクト]** を選択します。
+1. In the Solution Explorer view, right-click **APL2007M4PrimeService**, and then select **New Project**.
 
-    **[新しいプロジェクト]** オプションが表示されない場合は、*エクスプローラー* ビューではなく、*ソリューション エクスプローラー* ビューで作業していることを確認します。
+    If you don't see the **New Project** option, ensure that you're working in the *Solution Explorer* view, not the *Explorer* view.
 
-1. プロジェクトの種類の一覧が表示されたら、**[xUnit テスト プロジェクト]** を選択します。
+1. When the list of project types appears, select **xUnit Test Project**.
 
-1. プロジェクト名として、「**PrimeService.UnitTests**」を入力し、Enter キーを押します。
+1. For the project name, type **PrimeService.UnitTests** and then press Enter.
 
-    プロジェクト名は、テストするクラスの名前を反映する必要があり、ソリューション内で一意である必要があります。 この場合、クラスは `PrimeService` という名前であるため、テスト プロジェクトに `PrimeService.UnitTests` という名前を付けます。
+    The project name should reflect the name of the class that you're testing and it should be unique within the solution. In this case the class is named `PrimeService`, so the test project is named `PrimeService.UnitTests`.
 
-1. 既定のディレクトリの場所を設定します。
+1. Select the default directory location.
 
-    Visual Studio Code ターミナルを使用して xUnit テスト プロジェクトを作成することもできます。 ターミナルを開き、Numbers フォルダーに移動して、次のコマンドを実行します。
+    You could also create the xUnit test project using the Visual Studio Code terminal. Open a terminal, navigate to the Numbers folder, and then run the following command:
 
     ```plaintext
     dotnet new xunit -n PrimeService.UnitTests
     ```
 
-1. **[プロジェクトの作成]** を選択し、PrimeService.UnitTests フォルダーを展開します。
+1. Select **Create Project**, and then expand the PrimeService.UnitTests folder.
 
-1. PrimeService.UnitTests プロジェクトで作成された UnitTest1.cs ファイルを削除します。
+1. Delete the UnitTest1.cs file that's created with the PrimeService.UnitTests project.
 
-    新しい単体テストを作成する前に、テストするクラス プロジェクトを指す単体テスト プロジェクトへの参照を追加する必要があります。
+    Before you create a new unit test, you need to add a reference to the unit test project that points to the class project that you want to test.
 
-1. コード プロジェクトへの参照を追加するには、**[PrimeService.UnitTests]** を右クリックし、**[プロジェクト参照の追加]** を選択し、**[数値]** を選択します。
+1. To add a reference to your code project, right-click **PrimeService.UnitTests**, select **Add Project Reference**, and then select **Numbers**.
 
-1. 単体テスト用のクラスを作成するには、**[PrimeService.UnitTests]** を右クリックし、**[新しいファイル]** を選択し、**[クラス]** を選択し、「**PrimeServiceTests**」を入力して Enter キーを押します。
+1. To create a class for your unit tests, right-click **PrimeService.UnitTests**, select **New File**, select **Class**, type **PrimeServiceTests** and then press Enter.
 
-    Visual Studio Code によって PrimeServiceTests.cs ファイルが開かれます。
+    Visual Studio Code should open the PrimeServiceTests.cs file for you.
 
-1. ここで少し時間を取って、PrimeServiceTests.cs ファイルを調べます。
+1. Take a minute to examine the PrimeServiceTests.cs file.
 
-    このファイルは、次のコード スニペットのような内容になります。
+    Your file should be similar to the following code snippet:
 
     ```csharp
 
@@ -82,7 +82,7 @@ GitHub Copilot は、インライン チャットで候補を提案して、コ�
 
     ```
 
-1. プロジェクトをビルドするときに名前空間の問題を回避するには、PrimeServiceTests.cs ファイルを次のように更新します。
+1. To help avoid namespace issues when you build the project, update the PrimeServiceTests.cs file as follows:
 
     ```csharp
 
@@ -93,11 +93,11 @@ GitHub Copilot は、インライン チャットで候補を提案して、コ�
 
     ```
 
-    C# の名前空間は、関連するクラスと型を整理するために使用されます。 これは、名前の競合を回避し、コードの編成を理解しやすくする方法です。 テスト プロジェクトの名前空間の `.UnitTests` サフィックスは、この名前空間のコードが System.Numbers 名前空間のコードをテストしていることを示す一般的な規則です。 これにより、どのコードが運用コードで、どのコードがテスト コードであるかをプロジェクト構造で見ると明らかになります。
+    A namespace in C# is used to organize related classes and types. It's a way to avoid name collisions and to make it easier to understand the organization of the code. The `.UnitTests` suffix in the test project's namespace is a common convention to indicate that the code in this namespace is testing the code in the System.Numbers namespace. This makes it clear when looking at the project structure which code is production code and which code is test code.
 
-1. 少し時間を取って、PrimeService.UnitTests.csproj ファイルを調べます。
+1. Take a minute to examine the PrimeService.UnitTests.csproj file.
 
-    PrimeService.UnitTests.csproj ファイルには、次の `<PackageReference />` 要素を含む `<ItemGroup>` が含まれています。
+    The PrimeService.UnitTests.csproj file should include an `<ItemGroup>` that contains the following `<PackageReference />` elements:
 
     ```xml
 
@@ -108,7 +108,7 @@ GitHub Copilot は、インライン チャットで候補を提案して、コ�
 
     ```
 
-    これらのパッケージ参照は、テスト ライブラリとして xUnit を使用し、テスト ランナーを構成するために必要です。 PrimeService.UnitTests.csproj ファイルには次の `<ItemGroup>` 要素も含まれています。
+    These package references are required to use xUnit as the test library and to configure the test runner. You should also see the following `<ItemGroup>` elements in the PrimeService.UnitTests.csproj file:
 
     ```xml
 
@@ -121,75 +121,75 @@ GitHub Copilot は、インライン チャットで候補を提案して、コ�
 
     ```
 
-    これらの要素は、Numbers プロジェクトを参照し、xUnit テスト フレームワークを使用するために必要です。
+    These elements are required to reference the Numbers project and to use the xUnit test framework.
 
-1. ソリューションをビルドするには、**Ctrl+Shift+B** キーを押して、**dotnet: build** を選択します。
+1. To build the solution, press **Ctrl+Shift+B**, and then select **dotnet: build**.
 
-    .NET CLI コマンド (dotnet ビルド) を使用するか、ソリューション エクスプローラー ビューでソリューション ノードを右クリックして **[ビルド]** を選択し、ソリューションをビルドすることもできます。
-
-    > [!NOTE]
-    > ビルド **エラー**が表示された場合は、デモを続行する前にエラーを修正してください。 続行する前に、ビルドが正常に完了している必要があります。
-
-これで、GitHub Copilot Chat を使用して単体テストを作成する準備ができました。
-
-### チャット ビューを使用して単体テストを作成する
-
-GitHub Copilot と GitHub Copilot Chat は、コードベースのコンテキストに基づいて候補を提供して、コードの単体テストの生成をサポートします。 GitHub Copilot Chat を使用して、コード内の特定のメソッドまたはクラスの単体テストを生成できます。
-
-以下の手順に従って、デモのこのセクションを完了します。
-
-1. ソリューション エクスプローラー ビューで、Numbers の下にある PrimeService.cs ファイルを開きます。
-
-1. **IsPrime** メソッドを選択します。
-
-1. チャット ビューを開きます。
-
-1. **コンテキスト添付**ボタンを選択します。
-
-    **コンテキスト添付**ボタン (クリップ アイコン) は、コードベース内の関連コンテキストを GitHub Copilot に通知するために使用されます。 追加のコンテキストによって、GitHub Copilot チャットがより正確な提案を提供できるようになります。 この場合、GitHub Copilot が単体テストを提案するとき、PrimeServiceTests.cs ファイルを使うようにします。
-
-1. **[添付ファイルを検索]** ドロップダウン リストの **[最近開いた項目]** セクションで、**[PrimeServiceTests.cs]** を選択します。
-
-    **[添付ファイルを検索]** ドロップダウンには、選択できる既定のオプションがいくつかあります。 最近開いたファイルのリストも含まれています。 PrimeServiceTests.cs ファイルは、最近開いた項目のセクションに表示されているはずです。
-
-    添付ファイルを検索オプションの内容
-
-1. **コンテキスト添付**ボタンをもう一度選択します。
-
-1. [添付ファイルを検索] テキスト ボックスに「**PrimeService.Unit**」と入力し、**PrimeService.UnitTests.csproj** を選択します。
+    You could also build the solution using a .NET CLI command (dotnet build) or by right-clicking the solution node in the Solution Explorer view and selecting **Build**.
 
     > [!NOTE]
-    > エクスプローラー ビューからチャット ビューにファイルをドラッグしてドロップする方法を示します。 多くの場合、この方法の方がすばやくコンテキストを添付できます。
+    > If you see any build **errors**, correct the errors before you continue the demo. You must have a successful build before you continue.
 
-1. チャット ビューが追加のコンテキストで更新されていることに注意してください。
+You're now ready to create a unit test using GitHub Copilot Chat.
 
-1. チャット ビューで、**/tests add unit tests for my code** を選択します。
+### Create unit tests using Chat view
 
-    **/tests add unit tests for my code** オプションは、エディターで選択したコードの単体テストを生成するために使用されます。 この場合は、PrimeService.cs ファイルで **IsPrime** メソッドを選択しました。
+GitHub Copilot and GitHub Copilot Chat can help you generate unit tests for your code by providing suggestions based on the context of your codebase. You can use GitHub Copilot Chat to generate unit tests for specific methods or classes in your code.
 
-1. 少し時間を取って、GitHub Copilot の提案を確認します。
+Use the following steps to complete this section of the demo:
 
-    GitHub Copilot の提案には、"プラン" と、単体テストを含むサンプル コードの 2 つのセクションが含まれています。
+1. In the Solution Explorer view, under Numbers, open the PrimeService.cs file.
 
-    このプランによって、単体テスト用に新しいPrimeServiceTest.cs ファイルを作成することが提案されます。 また、Numbers プロジェクト フォルダーにファイルを作成することも提案されます。
+1. Select the **IsPrime** method.
 
-1. チャット ビューで **[編集の適用]** を選択します。
+1. Open the Chat view.
 
-1. [編集の適用] ボタンをクリックすると、エディターの新しいタブに単体テスト コードが配置されることに注意してください。
+1. Select the **Attach Context** button.
 
-    このコードを使用して、PrimeService.UnitTests プロジェクトの PrimeServiceTests.cs ファイルを更新できます。
+    The **Attach Context** button (paperclip icon) is used to inform GitHub Copilot of relevant context within your codebase. The additional context helps GitHub Copilot Chat to provide more accurate suggestions. In this case, you want GitHub Copilot to use your PrimeServiceTests.cs file when proposing unit tests.
 
-1. **[ファイル]** メニューで **[名前を付けて保存]** を選択し、PrimeService.UnitTests フォルダーに移動します。
+1. In the **Search attachments** dropdown list, in the **recently opened** section, select **PrimeServiceTests.cs**.
 
-1. **PrimeServiceTests.cs** を選択し、**[保存]** を選択します。
+    The **Search attachments** dropdown provides some default options that you can choose from. It also includes a list of recently opened files. The PrimeServiceTests.cs file should be listed in the recently opened section.
 
-1. 既存のファイルを上書きするかどうかを尋ねられたら、**[はい]** を選択します。
+    The Search attachments options include
 
-1. 少し時間を取って、更新された PrimeServiceTests.cs ファイルを確認します。
+1. Select the **Attach Context** button again.
 
-    GitHub Copilot チャットによって提案されるコードには、特定の素数と非素数のテストが含まれている必要があります。 提案されるコードには、複数のデータ セットをより簡潔にテストするためのパラメーター化されたテスト (`[Theory]` および `[InlineData]` 属性を使用) が含まれる場合があります。
+1. In the Search attachments text box, type **PrimeService.Unit**, and then select **PrimeService.UnitTests.csproj**.
 
-    次のようなコード スニペットが提供されます。
+    > [!NOTE]
+    > Demonstrate how to drag a file from the Explorer view and drop it onto the Chat view. In many cases this is a quicker way to attach context.
+
+1. Notice that the Chat view is updated with the additional context.
+
+1. In the Chat view, select **/tests add unit tests for my code**.
+
+    The **/tests add unit tests for my code** option is used to generate unit tests for the code that you've selected in the editor. In this case, you selected the **IsPrime** method in the PrimeService.cs file.
+
+1. Take a minute to review GitHub Copilot's suggestions.
+
+    GitHub Copilot's suggestion includes two sections, a "Plan" and a code sample containing unit tests.
+
+    The plan suggests creating a new PrimeServiceTest.cs file for the unit tests. It also suggests creating the file in the Numbers project folder.
+
+1. In the Chat view, select **Apply Edits**.
+
+1. Notice that the Apply Edits button places the unit test code on a new tab in the editor.
+
+    You can use this code to update the PrimeServiceTests.cs file in your PrimeService.UnitTests project.
+
+1. On the **File** menu, select **Save As**, and then navigate to the PrimeService.UnitTests folder.
+
+1. Select **PrimeServiceTests.cs**, and then select **Save**.
+
+1. When prompted to overwrite the existing file, select **Yes**.
+
+1. Take a minute to review the updated PrimeServiceTests.cs file.
+
+    The code suggested by GitHub Copilot Chat should include tests for specific prime and non-prime numbers. The suggested code may include parameterized tests (using `[Theory]` and `[InlineData]` attributes) to test multiple data sets more concisely.
+
+    The code snippet provided should be similar to the following code snippet:
 
     ```csharp
 
@@ -244,7 +244,7 @@ GitHub Copilot と GitHub Copilot Chat は、コードベースのコンテキ�
 
     ```
 
-    単体テストには PrimeService クラスのインスタンスが必要であることに注意してください。
+    Notice that the unit tests require an instance of the PrimeService class.
 
     ```csharp
 
@@ -256,38 +256,38 @@ GitHub Copilot と GitHub Copilot Chat は、コードベースのコンテキ�
 
     ```
 
-1. ソリューションをリビルドします。
+1. Rebuild the solution.
 
-    ビルドが正常に終了すると、各単体テストの横に緑色の "テスト矢印" が表示されるはずです。
+    You should see green "test arrows" next to each unit test if the build is successful.
 
-    次のセクションでは単体テストをさらに作成するため、現時点でテストを実行する必要はありません。
+    You create more unit tests the next section, so there's no need to run the tests at this time.
 
-    ただし、テストを実行する方法はいくつかあります。 次に例を示します。
+    However, there are several ways to run your tests. For example:
 
-    - `dotnet test` コマンドを使用して Visual Studio Code ターミナルからテストを実行できます。
-    - Visual Studio Code テスト エクスプローラー ビューからテストを実行できます。
-    - Visual Studio Code コマンド パレットから **Test:Run All Tests** コマンドを使用してテストを実行できます。
-    - コンテキスト メニューから **[現在のファイルでテストを実行]** オプションを選択して Visual Studio Code エディターからテストを実行できます。
+    - You can run the tests from the Visual Studio Code terminal by using the `dotnet test` command.
+    - You can run the tests from the Visual Studio Code Test Explorer view.
+    - You can run the tests from the Visual Studio Code Command Palette by using the **Test: Run All Tests** command.
+    - You can run the tests from the Visual Studio Code editor by selecting the **Run Tests in Current File** option from the context menu.
 
-    デモのこのセクションで作成したテストは正常に実行されます。 単体テストの横にある緑色の "テスト矢印" は、チェックマークが付いた緑色の円になります。
+    The tests you created during this section of the demo should run successfully. The green "test arrows" next to the unit test become green circles with a checkmark.
 
-### インライン チャットを使用して単体テストを作成する
+### Create unit tests using inline chat
 
-以下の手順に従って、デモのこのセクションを完了します。
+Use the following steps to complete this section of the demo:
 
-1. ソリューション エクスプローラー ビューで、PrimeService.cs ファイルを開きます。
+1. In the Solution Explorer view, open the PrimeService.cs file.
 
-    PrimeService.cs ファイルは、Numbers フォルダー内にあります。
+    PrimeService.cs is located in the Numbers folder.
 
-1. IsPrime メソッドを選択します。
+1. Select the IsPrime method.
 
-1. インライン チャット セッションを開き、次のプロンプトを入力します。
+1. Open an inline chat session, and then enter the following prompt:
 
     ```plaintext
     Create unit tests for the IsPrime method using the xUnit framework.
     ```
 
-1. ここで少し時間を取って、インライン チャットで提供される候補を確認します。
+1. Take a minute to review the suggestions provided by inline chat.
 
     ```csharp
 
@@ -342,12 +342,12 @@ GitHub Copilot と GitHub Copilot Chat は、コードベースのコンテキ�
 
     ```
 
-1. チャット ビューとインライン チャットでは同様のテスト カバレッジが生成されることに注意してください。
+1. Notice that the Chat view and inline chat produce similar test coverage.
 
-1. インライン チャットの提案を破棄するには、**[破棄]** を選択し、インライン チャットによって作成されたファイル タブを閉じます。
+1. To discard the inline chat suggestion, select **Discard**, and then close the file tab created by the inline chat.
 
-    このデモ中に GitHub Copilot によって提案された単体テストは、不完全である可能性があることに注意してください。 次のデモでは、テストすることを検討する可能性がある追加のエッジ ケースを調べます。
+    Keep in mind that the unit tests suggested by GitHub Copilot during this demo may be incomplete. The next demo examines additional edge cases that you might consider testing.
 
-### まとめ
+### Summary
 
-このデモでは、Visual Studio Code で GitHub Copilot Chat を使用して、コード プロジェクトの単体テストを作成しました。 xUnit テスト プロジェクトを作成し、テストするプロジェクトへの参照を追加し、`PrimeService` クラスの `IsPrime` メソッドの単体テストを生成しました。 GitHub Copilot Chat を使用して、チャット ビューとインライン チャットで単体テストを生成しました。
+In this demo, you created unit tests for a code project by using GitHub Copilot Chat in Visual Studio Code. You created an xUnit test project, added a reference to the project that you wanted to test, and generated unit tests for the `IsPrime` method in the `PrimeService` class. You used GitHub Copilot Chat to generate unit tests in the Chat view and the inline chat.

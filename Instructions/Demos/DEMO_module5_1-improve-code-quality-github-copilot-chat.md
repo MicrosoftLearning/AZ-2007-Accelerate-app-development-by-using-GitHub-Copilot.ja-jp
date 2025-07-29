@@ -1,165 +1,165 @@
 ---
 demo:
-  title: 'デモ:GitHub Copilot Chat を使用してコードの品質を向上させる'
-  module: 'Module 5: Implement code improvements using GitHub Copilot tools'
+    title: 'Demo: Improve code quality by using GitHub Copilot Chat'
+    module: 'Module 5: Implement code improvements using GitHub Copilot tools'
 ---
 
-# デモ:GitHub Copilot Chat を使用してコードの品質を向上させる
+# Demo: Improve code quality by using GitHub Copilot Chat
 
-## 手順
+## Instructions
 
-デモのアクティビティは、次のリソースを含む環境向けに設計されています。
+The demo activities are designed for an environment that includes the following resources:
 
-- Visual Studio Code。
-- Visual Studio Code 用の C# 開発キット拡張機能。
-- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
-- C# を使用して作成されたサンプル コード プロジェクト。
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
 
-**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
 
-**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
 
-### デモを紹介する
+### Introduce the demo
 
-"コード品質" という用語は、読みやすさ、保守容易性、モジュール性など、コードベースの全体的な品質を指します。 コード品質は、コードがどのように "適切に構造化" されており、コードをどれだけ簡単に理解、保守、拡張できるかを測る尺度です。
+The term "code quality" refers to the overall quality of the codebase, including readability, maintainability, and modularity. Code quality is a measure of how "well-structured" your code is and how easily it can be understood, maintained, and extended.
 
 > [!IMPORTANT]
-> このデモが高品質のコードを開発するためのベスト プラクティスを示すものではないことを学生に説明します。 そうではなく、GitHub Copilot Chat を使用して、サンプル アプリケーションのコード品質を向上するための提案を示すことに焦点を当てています。 提案は、高品質のコードを開発するためのベスト プラクティスや包括的なソリューションを表すものではありません。 開発者は、自身の判断と専門知識を使用して、GitHub Copilot Chat から提供される提案を評価し、実装する必要があります。 GitHub Copilot から提示された提案を実装したとしても、徹底的なコードの確認やテストが必要であることに変わりはありません。
+> Explain to the students that this demo isn't about best practices for developing high-quality code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code quality in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing high-quality code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
 
-以下のセクションでは、学生が知っておくべきコード リファクタリングとコード品質の概要について説明します。
+The following sections provide an overview of code refactoring and code quality that your students should be aware of.
 
-#### コード リファクタリングと高品質のコード
+#### Code refactoring and high-quality code
 
-コード リファクタリングは、外部の動作を変更せずに既存のコードを再構築するプロセスです。 コード リファクタリングの目的は、コードベースの内部構造を改善し、理解、保守、拡張を容易にすることです。 コード リファクタリングは、読みやすさを高め、複雑さを軽減し、モジュール性を向上し、再利用性を高めることで、高品質のコードを生成するのに役立ちます。 これらの各要素は、管理しやすく保守しやすいコードベースを作成するのに役立ちます。
+Code refactoring is the process of restructuring existing code without changing its external behavior. The goal of code refactoring is to improve the internal structure of the codebase, making it easier to understand, maintain, and extend. Code refactoring can help you produce high-quality code by enhancing readability, reducing complexity, improving modularity, and increasing reusability. Each of these factors helps to create a more manageable and maintainable codebase.
 
-開発者は、コード品質の向上に取り組むときに、次の要素を考慮する必要があります。
+Developers should consider the following factors when working on code quality improvements:
 
-- 読みやすさ:コードの読みやすさを向上または強化すると、開発者が理解しやすくなります。
-- 複雑さ:コードの複雑さを軽減すると、コードの理解、管理、保守が容易になります。
-- モジュール性と再利用性:コードを再利用可能な小さいモジュールまたはコンポーネントに分割すると、コードの管理と保守が容易になります。
+- Readability: Improve or enhance the readability of code can make it easier for developers to understand.
+- Complexity: Reduce code complexity makes the code easier to understand, manage, and maintain.
+- Modularity and reusability: Break code down into smaller, reusable modules or components can make the code easier to manage and maintain.
 
-上記の要素は、開発者がコード品質について検討するときに特定する 3 つの一般的な領域を表しています。 コード品質に関連付けることができるその他の要素は次のとおりです。
+The factors listed above represent three common areas that developers identify when discussing code quality. Other factors that can be associated with code quality include:
 
-- テスト容易性:コードをテストして正常に動作することを確認することが簡単に行えること。 多くの場合、これは、優れた設計とモジュール性によって得られます。
-- 拡張性:新しい機能を追加するためのコードの拡張や強化を簡単に行えること。 多くの場合、これは、優れた設計とモジュール性によって得られます。
+- Testability: The ease with which the code can be tested to ensure it works correctly. Often a byproduct of good design and modularity.
+- Extensibility: The ease with which the code can be extended or enhanced to add new features or functionality. Often a byproduct of good design and modularity.
 
-コードの確認中に開発者が考慮する要素は、コード品質だけではありません。 コード品質に加えて、開発者がよく評価するその他の要因を次にいくつか示します。
+Code quality is not the only factor that developers consider during code reviews. Here are some more factors that developers often evaluate in addition to code quality:
 
-- 信頼性:コードが、指定された条件下で目的の機能を実行できること。
-- パフォーマンス：コードがどの程度効率的に実行できるか。
-- セキュリティ:コードが、不正なアクセスや改ざんからデータやリソースを保護できること。
-- スケーラビリティ: コードが、今後増加するワークロードや規模の拡張に対応できること。
-- 使いやすさ:開発者またはエンド ユーザーがコードを簡単に使用できること。
-- 移植性:コードが、さまざまなプラットフォームまたは環境で実行できること。
+- Reliability: The code’s ability to perform its intended functions under specified conditions.
+- Performance: How efficiently the code executes.
+- Security: The code’s ability to protect data and resources from unauthorized access or modification.
+- Scalability: The code’s ability to handle increased workloads or growth in the future.
+- Usability: The ease with which the code can be used by developers or end users.
+- Portability: The ability of the code to run on different platforms or environments.
 
 > [!NOTE]
-> このモジュールの次の 2 つのユニットでは、GitHub Copilot Chat を使用して、コードの信頼性、パフォーマンス、セキュリティを向上する方法について説明します。
+> The next two units in this module cover improving code reliability, performance, and security using GitHub Copilot Chat.
 
-多くの場合、コード品質の向上は、新機能や機能拡張を追加する前に行われるものと考えられています。 コードの信頼性、パフォーマンス、またはセキュリティに取り組む前に、コード品質の向上を検討する必要があります。
+Improving code quality is often considered a precursor to adding new features or enhancements. You should consider improvements to code quality before working on code reliability, performance, or security.
 
-このデモでは、GitHub Copilot Chat を使用して、サンプル アプリケーションのコード品質の向上に役立つ提案を生成します。
+In this demonstration, you'll use GitHub Copilot Chat to generate suggestions that help you improve code quality in a sample application.
 
-### GitHub Copilot Chat のプロンプトを開発する
+### Develop prompts for GitHub Copilot Chat
 
-適切なプロンプトを作成することの重要性を繰り返します。
+Reiterate the importance of creating good prompts.
 
-GitHub Copilot Chat について記述するプロンプトでは、明確に定義した*コンテキスト*と*意図*を指定する必要があります。 プロンプトの*意図*の部分は、達成したい目標を示します。 たとえば、GitHub Copilot に "コードのモジュール性を向上するようにリファクタリングする" ことを依頼できます。 プロンプトの*コンテキスト*部分は、考慮する必要のあるリソースを GitHub Copilot に知らせます。 たとえば、ワークスペース全体を考慮しつつ、特定のファイルまたはコード セクションに注目するよう GitHub Copilot に伝えル場合があります。 プロンプトを開発するときは、次の推奨事項を考慮してください。
+The prompts you write for GitHub Copilot Chat should provide a clearly defined *context* and *intent*. The *intent* portion of the prompt describes the goal that you what to achieve. For example, you may ask GitHub Copilot to "refactor to improve code modularity". The *context* portion of the prompt tells GitHub Copilot what resources to consider. For example, you may want GitHub Copilot to consider the entire workspace, but focus on a specific file or code section. Consider the following suggestions when developing your prompts:
 
-- 更新するコードよりも高いレベルで範囲を設定する、外側のコンテキストを定義します。 たとえば、メソッドをリファクタリングする場合は、そのメソッドを含むクラスまたはファイルを外側のコンテキストとして指定します。 メソッドを内側のコンテキストとして識別します。
-- チャット参加者とチャット変数を使用して、コンテキストを指定します。 `#file:` と `#selection` のチャット変数を使用して、焦点を当てる特定のコードを識別できます。 必要に応じて、ワークスペース全体 (`@workspace`) を含めることもできます。 たとえば、特定のファイル内のメソッドをリファクタリングするとします。 `#file:` チャット変数を使用して、どのファイルを対象とするかを GitHub Copilot に指示できます。 エディターでメソッドを選択し、`#selection` チャット変数を使用して、リファクタリングするコードを GitHub Copilot に指示できます。 また、`@workspace` チャット変数を使用して、ワークスペース全体を考慮するように GitHub Copilot に指示することもできます。 プロンプトの自然言語部分の選択対象またはファイルを参照して、指定されたコンテキストを強化します。 たとえば、"選択したコードの読みやすさを向上するにはどうすればよいか" と言うことができます。
-- 意図は、明確で具体的であること、そして、改善したいコード品質の側面を示している必要があります。 たとえば、"選択したコードのモジュール性を向上するにはどうすればよいか" と GitHub Copilot Chat に尋ねることができます。
+- Define an outer context that's scoped at a higher level than the code you want to update. For example, if you want to refactor a method, specify the class or file that contains the method as the outer context. Identify the method as an inner context.
+- Use chat participants and chat variables to help specify context. You can use the `#file:` and `#selection` chat variables to identify the specific code you are focused on. You can also include the full workspace (`@workspace`) when appropriate. Suppose you want to refactor a method in a specific file. You can use the `#file:` chat variable to tell GitHub Copilot which file to look at. You can select the method in the editor and use the `#selection` chat variable to tell GitHub Copilot what code to you want to refactor. You can also use the `@workspace` chat variable to tell GitHub Copilot to consider the entire workspace. Reinforce the specified context by referring to the selection or file in the natural language portion of your prompt. For example, you might say, "how can I improve the readability of the selected code?"
+- The intent should be clear and specific, and should specify the code quality aspect that you want to improve. For example, you might ask GitHub Copilot Chat to "How can I improve the modularity of the selected code".
 
-デモのこの部分では、**APL2007M5BankAccount** プロジェクトを確認し、GitHub Copilot Chat のプロンプトを 3 つ作成します。 プロンプトでは、コードの読みやすさ、保守容易性、モジュール性の向上に焦点を当てます。
+During this portion of the demo, you review the **APL2007M5BankAccount** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code readability, maintainability, and modularity.
 
-次の手順に従って、デモのこの部分を完了します。
+Use the following steps to complete this portion of the demo:
 
-1. Visual Studio Code で **APL2007M5BankAccount** サンプル アプリを開きます。
+1. Open the **APL2007M5BankAccount** sample app in Visual Studio Code.
 
-1. **Program.cs** ファイルを開き、コードを確認します。
+1. Open the **Program.cs** file and review the code.
 
-    このプログラムは、銀行システムをシミュレートするコンソール アプリケーションです。 主な機能は次のとおりです。
+    This program is a console application that simulates a banking system. Here are the key features:
 
-    - Main メソッド:Main メソッドは、アプリケーションのエントリ ポイントです。 これは、銀行口座を作成し、その口座を使用してトランザクションをシミュレートします。
+    - Main Method: The Main method is the entry point of the application. It creates bank accounts and uses the accounts to simulate transactions.
 
-    - 定数:このプログラムは、Program クラスの先頭にいくつかの定数を定義します。 定数には、作成する口座の数、シミュレートするトランザクションの数、トランザクションの制限などがあります。
+    - Constants: The program defines several constants at the top of the Program class. The constants include things like: the number of accounts to create, the number of transactions to simulate, and the transaction limits.
 
-1. ここで少しの時間を取って、コードの読みやすさ、保守容易性、モジュール性を向上するために使用できるプロンプトを記述してみましょう。
+1. Take a minute to write some prompts you can use to improve code readability, maintainability, and modularity.
 
-    BankAccount プロジェクトの場合は、BankAccount.cs ファイルや Program.cs ファイルをチャット コンテキストにアタッチする必要があります。 プロンプトは次の例のようになります。
+    For the BankAccount project, you should attach the BankAccount.cs and/or Program.cs files to the Chat context. Your prompts could be similar to the following examples:
 
-    プロンプト: `@workspace /explain How can I improve the readability of the [selected code]?`
+    Prompt: `@workspace /explain How can I improve the readability of the [selected code]?`
 
-    プロンプト: `@workspace /explain #selection How can I improve the maintainability of the [selected code]?`
+    Prompt: `@workspace /explain #selection How can I improve the maintainability of the [selected code]?`
 
-    プロンプト: `@workspace /explainHow can I improve the modularity of the [selected code]?`
+    Prompt: `@workspace /explainHow can I improve the modularity of the [selected code]?`
 
-    プロンプト: `#selection How can I refactor the [selected code] to improve modularity?`
+    Prompt: `#selection How can I refactor the [selected code] to improve modularity?`
 
-    プロンプト: `@workspace /explain What are some options for simplifying the [selected code]?`
+    Prompt: `@workspace /explain What are some options for simplifying the [selected code]?`
 
-1. デモの残りの部分で使用する 3 つのプロンプトを作成します。
+1. Create three prompts to use during the remainder of the demo.
 
-### GitHub Copilot Chat を使用してコードをリファクタリングする
+### Refactor your code using GitHub Copilot Chat
 
-GitHub Copilot Chat を使用すると、コードをリファクタリングして改善するコード更新を提案できます。 アプリケーションをどのようにリファクタリングするかを決定する前に、コードと目標を理解することが重要です。
+You can use GitHub Copilot Chat to suggest code updates that refactor and improve your code. It's important to understand your code and your goals before making a decision about how to refactor the application.
 
-GitHub Copilot Chat が提供する提案は、慎重に確認する必要があります。 どの提案が目標の達成に役立つかを、実装する前に検討してください。 このデモでは、どの提案を実装するかを決定する際に時間も考慮する必要があります。
+The suggestions GitHub Copilot Chat provides must be reviewed carefully. Consider which suggestions support your goals before you implement them. For the purpose of this demo, your time may also be a factor in deciding which suggestions to implement.
 
-次の手順に従って、デモのこの部分を完了します。
+Use the following steps to complete this portion of the demo:
 
-1. ここで少しの時間を取って、Program.cs ファイルに含まれるメソッドを確認してください。
+1. Take a minute to review the methods included in the Program.cs file.
 
-    - CreateBankAccounts メソッド:このメソッドは、指定した数の銀行口座を、ランダムな初期残高、口座所有者名、口座の種類、口座開設日を使用して作成します。 これは、try-catch ブロックを使用して、口座の作成時に発生する可能性のある例外を処理します。
+    - CreateBankAccounts Method: This method creates a specified number of bank accounts with random initial balances, account holder names, account types, and opening dates. It uses a try-catch block to handle any exceptions that might occur during account creation.
 
-    - SimulateTransactions メソッド:このメソッドは、銀行口座の一覧に対し、指定した数のトランザクションをシミュレートします。 トランザクションごとにランダムなトランザクション金額を生成し、金額が正か負かに応じて、この金額を貸方または借方に記入します。 try-catch ブロックを使用して、トランザクション中に発生する可能性のある例外を処理します。
+    - SimulateTransactions Method: This method simulates a specified number of transactions on a list of bank accounts. It generates a random transaction amount for each transaction and then credits or debits the account with this amount, depending on whether the amount is positive or negative. It uses a try-catch block to handle any exceptions that might occur during the transactions.
 
-    - SimulateTransfers メソッド:このメソッドは、SimulateTransactions メソッドと同じです。 口座間の転送をシミュレートすることを目的としているように見えますが、現時点では、個々の口座のトランザクションをシミュレートするだけです。
+    - SimulateTransfers Method: This method is identical to the SimulateTransactions method. It seems to be intended to simulate transfers between accounts, but currently, it just simulates transactions on individual accounts.
 
-    - GenerateRandomDollarAmount メソッド:このメソッドは、指定した範囲内でランダムなドルの金額を生成します。 これは、別の数式を使用して、口座残高とトランザクションのどちらに対する金額であるかに応じて金額を生成します。
+    - GenerateRandomDollarAmount Method: This method generates a random dollar amount within a specified range. It uses a different formula to generate the amount depending on whether the amount is for an account balance or a transaction.
 
-    - GenerateRandomAccountHolder メソッド:このメソッドは、定義済みの名前の一覧から、ランダムな口座所有者の名前を選択します。
+    - GenerateRandomAccountHolder Method: This method selects a random account holder name from a predefined list of names.
 
-    - GenerateRandomAccountType メソッド:このメソッドは、定義済みの種類の一覧から、ランダムな口座の種類を選択します。
+    - GenerateRandomAccountType Method: This method selects a random account type from a predefined list of types.
 
-    - GenerateRandomDateOpened メソッド:このメソッドは、現在の日付より前の、指定した年内のランダムな日付を生成します。
+    - GenerateRandomDateOpened Method: This method generates a random date within a specified range of years back from the current date.
 
-1. プロジェクトがビルドされ、エラーなしで実行されることを確認します。
+1. Ensure that the project builds and runs without errors.
 
-1. 準備したプロンプトから最初のプロンプトを選択します。
+1. Choose your first prompt from the prompts that you prepared.
 
-1. 改善するコードを選択し、チャット ビューを開きます。
+1. Select the code that you want to improve, and then open the Chat view.
 
-1. チャット ビューで、**[コンテキストのアタッチ]** ボタンを使用して関連するファイルをチャット コンテキストに追加し、プロンプトを入力します。
+1. In the Chat view, use the **Attach Context** button to add relevant files to the Chat context, and then enter your prompt.
 
-    ドラッグ アンド ドロップ操作を使用して、ソリューション エクスプローラー ビューからチャット コンテキストにファイルをアタッチする方法を示すこともできます。
+    You can also demonstrate using a drag-and-drop operation to attach files from the Solution Explorer view to the Chat context.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - Program.cs ファイルで作業することにします。
-    - 次のプロンプトを選択します: `@workspace /explain #selection How can I improve the readability of the GenerateRandomBalance, GenerateRandomAccountHolder, GenerateRandomAccountType, and GenerateRandomDateOpened methods?`
-    - Program.cs ファイルを開き、`GenerateRandomBalance`、`GenerateRandomAccountHolder`、`GenerateRandomAccountType`、`GenerateRandomDateOpened` のメソッドを選択します。
-    - チャット ビューを開き、Program.cs ファイルをチャット コンテキストにアタッチします。
-    - チャット ビューにプロンプトを入力します。
+    - You decide to work on the Program.cs file.
+    - You choose the following prompt: `@workspace /explain #selection How can I improve the readability of the GenerateRandomBalance, GenerateRandomAccountHolder, GenerateRandomAccountType, and GenerateRandomDateOpened methods?`
+    - You open the Program.cs file and select the following methods: `GenerateRandomBalance`, `GenerateRandomAccountHolder`, `GenerateRandomAccountType`, `GenerateRandomDateOpened`.
+    - You open the Chat view and attach the Program.cs file to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    これらのアクションを完了すると、GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    After you complete these actions, GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *これらのメソッドの読みやすさを向上させるために、次の手順に従うことができます。*
+    *To improve the readability of these methods, you can follow these steps:*
 
-    *1.繰り返しコードを別のメソッドに抽出する:Random オブジェクトが、さまざまなメソッドで複数回作成されています。クラス レベルで静的な Random オブジェクトを作成して、すべてのメソッドで使用することもできます。これにより、読みやすさが向上するだけでなく、ランダム性も向上します。*
+    *1. Extract repeated code into separate methods: The Random object is created multiple times in different methods. You could create a static Random object at the class level and use it in all methods. This would not only improve readability but also provide better randomness.*
 
     `private static readonly Random random = new Random();`
 
-    *2.わかりやすい変数名を使用する:GenerateRandomDateOpened メソッドの変数名 `range` は少しあいまいです。daysRange のようなわかりやすい名前を使用します。*
+    *2. Use meaningful variable names: The variable name `range` in the GenerateRandomDateOpened method is a bit vague. A more descriptive name like daysRange could be used.*
 
-    *3.コメントを追加する:コードは、ほとんどの場合、見るだけでその内容がわかるようになっていますが、そのメソッドが何を実行するかを説明するコメントを追加しておくと、他の開発者がコードを使用する際に役立ちます。*
+    *3. Add comments: While the code is mostly self-explanatory, adding comments to explain what each method does can be helpful for other developers reading your code.*
 
-    *4.マジック ナンバーに定数を使用する:GenerateRandomDateOpened メソッドでは、数値 `10` を使用して、開始日から何年前までを指定できるかを表します。これを定数に抽出して、`MaxYearsBack` などのわかりやすい名前を付けることができます。*
+    *4. Use constants for magic numbers: In the GenerateRandomDateOpened method, the number `10` is used to represent the number of years back the start date can be. This could be extracted to a constant with a descriptive name, like `MaxYearsBack`.*
 
-    *5.var キーワードを使用する:C# では、代入の右側で型が明らかになったときに var キーワードを使用できます。これにより、コードがよりすっきりし、読みやすくなります。*
+    *5. Use var keyword: In C#, you can use the var keyword when the right-hand side of the assignment makes the type obvious. This can make your code cleaner and easier to read.*
 
-   *これらの改善を行った後、コードがどのように表示されるかを次に示します。*
+   *Here's how your code might look after these improvements:*
 
     ```csharp
 
@@ -196,40 +196,40 @@ GitHub Copilot Chat が提供する提案は、慎重に確認する必要があ
     ```
 
     > [!IMPORTANT]
-    > `GenerateRandomAccountHolder` メソッドと `GenerateRandomAccountType` メソッドのプレースホルダー値 (`/* types here */` など) に注目してください。 GitHub Copilot Chat では、コードの詳細がプレースホルダーに置き換えられる場合があります。 これらは、よく見れば簡単に見つかります。 更新を実装するときは、プレースホルダーの値をアプリの値に置き換える必要があります。 プレースホルダーが表示されたら、提案された更新を実装する前に、既存のコードのコピーを作成する必要があります。 提案されたコード ブロックがアプリ内のコードと一致する場合は、ブロック コメントを使用して既存のコードをコメントアウトし、チャット ビューの **[カーソル位置に挿入]** ボタンを使用すると、名前の競合なく、提案された更新を実装できます。 提案された更新が期待どおりに動作することを確認したら、ブロック コメントを削除できます。
+    > Notice the placeholder values (such as `/* types here */`) in the `GenerateRandomAccountHolder` and `GenerateRandomAccountType` methods. GitHub Copilot Chat occasionally replaces code details with placeholders. These are easy to spot if you're paying attention. You'll need to replace the placeholder values with values from your app when you implement an update. If you see placeholders, you should make a copy of your existing code before implementing the suggested updates. If the suggested code block aligns with the code in your app, you can use a block comment to comment out your existing code, and then use the Chat view's **Insert at Cursor** button to implement the suggested updates without creating a naming conflict. Once you verify that the suggested update works as expected, you can remove the block comment.
 
-1. コードの読みやすさ、保守容易性、モジュール性を向上するのに役立つ、提案された更新を実装します。
+1. Implement the suggested updates that help to improve code readability, maintainability, modularity.
 
-    ブロック コメントを使用して既存のコードをコメントアウトした場合は、チャット ビューの **[カーソル位置に挿入]** を使用して、提案された更新を挿入できます。 [コピー] オプションを使用して、選択した場所に更新内容を貼り付けることもできます。
+    If you used block comments to comment out your existing code, you can use the Chat view's **Insert at Cursor** to insert the suggested updates. You can also use the Copy option and paste the update into the location of your choice.
 
-    どの更新の提案を実装するかを選択する前に、職場で実施されているコード作成の標準とポリシーを考慮してください。
+    Consider the coding standards and policies implemented at your workplace before choosing which update suggestions to implement.
 
-1. 更新の実装時にエラーが発生しないようにするには、続行する前にソリューションをビルドして実行します。
+1. To ensure that no errors were introduced when you implemented your updates, build and run your solution before continuing.
 
-1. 2 番目のプロンプトを入力し、GitHub Copilot Chat から提案された更新を確認します。
+1. Enter your second prompt and review the updates proposed by GitHub Copilot Chat.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - 最初のサンプル プロンプトで GitHub Copilot Chat が提案した更新を実装します。
-    - Program.cs ファイルでの作業を続行することにします。
-    - 次のプロンプトを選択します: `@workspace /explain How can I improve the maintainability of the Main, GenerateRandomBalance, GenerateRandomAccountHolder, GenerateRandomAccountType, and GenerateRandomDateOpened methods?`。
-    - 次のメソッドを選択します: `Main`、`GenerateRandomBalance`、`GenerateRandomAccountHolder`、`GenerateRandomAccountType`、`GenerateRandomDateOpened`。
-    - チャット ビューを開き、Program.cs ファイルをチャット コンテキストにアタッチします。
-    - チャット ビューにプロンプトを入力します。
+    - You implement the updates that GitHub Copilot Chat suggested for the first example prompt.
+    - You decide to continue working on the Program.cs file.
+    - You choose the following prompt: `@workspace /explain How can I improve the maintainability of the Main, GenerateRandomBalance, GenerateRandomAccountHolder, GenerateRandomAccountType, and GenerateRandomDateOpened methods?`.
+    - You select the following method(s): `Main`, `GenerateRandomBalance`, `GenerateRandomAccountHolder`, `GenerateRandomAccountType`, `GenerateRandomDateOpened`.
+    - You open the Chat view and attach the Program.cs file to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    これらのアクションを完了すると、GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    After you complete these actions, GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *これらのメソッドの保守容易性を向上させるために、次の手順に従うことができます。*
+    *To improve the maintainability of these methods, you can follow these steps:*
 
-    *1.懸念事項の分離:Main メソッドでは、口座の作成、トランザクションのシミュレート、転送のシミュレートなど、多くのことを行います。これらは、読みやすさと保守容易性を向上させるために、別々のメソッドに分けることができます。*
+    *1. Separation of Concerns: The Main method is doing a lot of things: creating accounts, simulating transactions, and simulating transfers. These could be broken down into separate methods to improve readability and maintainability.*
 
-    *2.エラー処理:このコードでは、エラー処理に一般的な例外を使用しています。アプリケーションに固有のカスタム例外を作成することをお勧めします。それにより、エラーの理解と処理が容易になります。*
+    *2. Error Handling: The code uses a general Exception for error handling. It would be better to create custom exceptions that are specific to the application. This would make it easier to understand and handle errors.*
 
-    *3.マジック ナンバー:このコードにはマジック ナンバーが含まれています (口座の数を表す 20、トランザクションの数を表す 100 など)。これらは名前付き定数に置き換えるべきです。*
+    *3. Magic Numbers: The code contains magic numbers (like 20 for the number of accounts, 100 for the number of transactions, etc.). These should be replaced with named constants.*
 
-    *4.コードの重複:ランダムな値を生成するためのコードが、複数の場所で重複しています。これは、ユーティリティ クラスまたはメソッドにリファクタリングできます。*
+    *4. Code Duplication: The code for generating random values is duplicated in several places. This could be refactored into a utility class or methods.*
 
     ```csharp
 
@@ -275,40 +275,40 @@ GitHub Copilot Chat が提供する提案は、慎重に確認する必要があ
 
     ```
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-1. コードの読みやすさ、保守容易性、モジュール性を向上するのに役立つ、提案された更新を実装します。
+1. Implement the suggested updates that help to improve code readability, maintainability, and modularity.
 
-    ブロック コメントを使用して既存のコードをコメントアウトした場合は、チャット ビューの **[カーソル位置に挿入]** を使用して、提案された更新を挿入できます。 [コピー] オプションを使用して、選択した場所に更新内容を貼り付けることもできます。
+    If you used block comments to comment out your existing code, you can use the Chat view's **Insert at Cursor** to insert the suggested updates. You can also use the Copy option and paste the update into the location of your choice.
 
-1. 変更によってエラーが発生しないようにするには、続行する前にソリューションをビルドして実行します。
+1. To ensure that no errors were introduced by the changes, build and run your solution before continuing.
 
-1. 3 番目のプロンプトを入力し、少し時間を取って提案を確認します。
+1. Enter your third prompt, and then take a minute review the suggestions.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - 1 番目と 2 番目のプロンプトで GitHub Copilot Chat が提案した更新を実装します。
-    - Program.cs ファイルでの作業を続行することにします。
-    - 次のプロンプトを選択します: `@workspace /explain How can I improve the modularity of the Program.cs file?`。
-    - 次のコードを選択します。すべての Program.cs ファイルを選択します。
-    - チャット ビューを開き、Program.cs ファイルをチャット コンテキストにアタッチします。
-    - チャット ビューにプロンプトを入力します。
+    - You implement the updates that GitHub Copilot Chat suggested for the first and second prompts.
+    - You decide to continue working on the Program.cs file.
+    - You choose the following prompt: `@workspace /explain How can I improve the modularity of the Program.cs file?`.
+    - You select the following code: Select all of the Program.cs file.
+    - You open the Chat view and attach the Program.cs file to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    これらのアクションを完了すると、GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    After you complete these actions, GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *Program.cs ファイルのモジュール性を向上させるために、次の手順に従うことができます。*
+    *To improve the modularity of the Program.cs file, you can follow these steps:*
 
-    *1.懸念事項を分離する:`Program` クラスで行う処理が多すぎます。口座の作成、トランザクションのシミュレート、ランダム データの生成を行っています。これらの役割はそれぞれ別のクラスに分けることができます。たとえば、銀行口座の作成を担当する `BankAccountFactory` クラス、トランザクションをシミュレートする `TransactionSimulator` クラス、ランダム データを生成する `RandomDataGenerator` クラスに分けることができます。*
+    *1. Separate Concerns: The `Program` class is doing too much. It's creating accounts, simulating transactions, and generating random data. Each of these responsibilities could be a separate class. For example, you could have a `BankAccountFactory` class that's responsible for creating bank accounts, a `TransactionSimulator` class for simulating transactions, and a `RandomDataGenerator` class for generating random data.*
 
-    *2.インターフェイスを使用する:インターフェイスを使用して、クラスのコントラクトを定義できます。これにより、コードの柔軟性が高まり、テストが容易になります。たとえば、`Create` メソッドを使用して `IAccountFactory` インターフェイスを定義し、`BankAccountFactory` でこのインターフェイスを実装できます。*
+    *2. Use Interfaces: Interfaces can be used to define a contract for classes. This can make your code more flexible and easier to test. For example, you could define an `IAccountFactory` interface with a `Create` method, and then have `BankAccountFactory` implement this interface.*
 
-    *3.マジック ナンバー:コードにはいくつかの "マジック ナンバー" があります (10、50000、-500、500 など)。コードの読みやすさと保守容易性を高めるために、これらの数値を名前付き定数に置き換えるべきです。*
+    *3. Magic Numbers: There are several "magic numbers" in the code (like 10, 50000, -500, 500, etc.). These numbers should be replaced with named constants to make the code more readable and maintainable.*
 
-    *4.重複:メソッド `SimulateTransactions` と `SimulateTransfers` のコードはほぼ同じです。この重複を排除するには、両方のメソッドが呼び出す共通のメソッドを作成します。*
+    *4. Duplication: The `SimulateTransactions` and `SimulateTransfers` methods have almost identical code. This duplication could be eliminated by creating a common method that both methods call.*
 
-   *CreateBankAccounts メソッドをリファクタリングする方法の例を次に示します。*
+   *Here's an example of how you could refactor the CreateBankAccounts method:*
 
-    **コード スニペット A:インターフェイスを使用する**
+    **Code snippet A: Use Interfaces**
 
     ```csharp
 
@@ -356,7 +356,7 @@ GitHub Copilot Chat が提供する提案は、慎重に確認する必要があ
 
     ```
 
-    **コード スニペット B:重複**
+    **Code snippet B: Duplication**
 
     ```csharp
 
@@ -395,13 +395,13 @@ GitHub Copilot Chat が提供する提案は、慎重に確認する必要があ
     ```
 
     > [!NOTE]
-    > 3 番目のプロンプトから GitHub Copilot が生成した更新の提案を実装する必要はありません。 この提案を確認すると、コード改善プロセスがどのように進むかの情報がわかります。
+    > You don't need to implement the update suggestions that GitHub Copilot generated from your third prompt. Reviewing the suggestions may provide insights into how the code improvement process progresses.
 
-次の 2 つのデモでは、次のトピックについて説明します。
+Your next two demos cover the following topics:
 
-- GitHub Copilot Chat を使用してコードの信頼性とパフォーマンスを改善する
-- GitHub Copilot Chat を使用してコードのセキュリティを改善する
+- Improve code reliability and performance by using GitHub Copilot Chat
+- Improve code security by using GitHub Copilot Chat
 
-## まとめ
+## Summary
 
-このデモでは、GitHub Copilot Chat を使用して、サンプル アプリケーションのコード品質の向上に役立つ提案を生成しました。 コードの読みやすさ、保守容易性、モジュール性の向上に重点を置いたプロンプトを作成しました。 GitHub Copilot Chat から提供された提案を確認し、コード品質の向上に役立つ更新を実装しました。 また、コードをさらに改善できる追加の提案も検討しました。
+In this demo, you used GitHub Copilot Chat to generate suggestions that help you improve code quality in a sample application. You developed prompts that focused on improving code readability, maintainability, and modularity. You reviewed the suggestions provided by GitHub Copilot Chat and implemented the updates that helped to improve code quality. You also considered additional suggestions that could further improve your code.
