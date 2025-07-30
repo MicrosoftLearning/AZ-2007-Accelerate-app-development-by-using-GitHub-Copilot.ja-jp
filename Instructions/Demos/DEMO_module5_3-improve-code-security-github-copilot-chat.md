@@ -1,174 +1,174 @@
 ---
 demo:
-  title: 'デモ:GitHub Copilot Chat を使用してコードのセキュリティを改善する'
-  module: 'Module 5: Implement code improvements using GitHub Copilot tools'
+    title: 'Demo: Improve code security by using GitHub Copilot Chat'
+    module: 'Module 5: Implement code improvements using GitHub Copilot tools'
 ---
 
-# デモ:GitHub Copilot Chat を使用してコードのセキュリティを改善する
+# Demo: Improve code security by using GitHub Copilot Chat
 
-## 手順
+## Instructions
 
-デモのアクティビティは、次のリソースを含む環境向けに設計されています。
+The demo activities are designed for an environment that includes the following resources:
 
-- Visual Studio Code。
-- Visual Studio Code 用の C# 開発キット拡張機能。
-- Visual Studio Code 用の GitHub Copilot および GitHub Copilot Chat 拡張機能。 GitHub Copilot のアクティブなサブスクリプションを持つ GitHub アカウントが必要です。
-- C# を使用して作成されたサンプル コード プロジェクト。
+- Visual Studio Code.
+- The C# Dev Kit extension for Visual Studio Code.
+- The GitHub Copilot and GitHub Copilot Chat extensions for Visual Studio Code. A GitHub account with an active subscription for GitHub Copilot is required.
+- Sample code projects created using C#.
 
-**注**:デモには講師自身の GitHub アカウントと GitHub Copilot サブスクリプションを使用することを検討するようにお勧めします。 そうすると開発環境を制御およびカスタマイズできるようになります。 また、クラスルームの必要に合わせてデモを簡単に調整できます。
+**NOTE**: We recommend that instructors consider using their own GitHub account and GitHub Copilot subscription for the demos. This will enable you to control and customize your dev environment. It will also make it easier to adjust the demos to fit the needs of your classrooms.
 
-**重要**:講師の PC ではなく、ホストされたラボ環境でデモを実行することを選択した場合は、ホストされた環境でサンプル アプリを解凍できます。 デモを実行する前に、ホストされた環境で GitHub Copilot 拡張機能を構成する必要があります。 ホストされた環境はローカル環境よりも遅い場合があるため、それに応じてデモのペースを調整することが必要になる場合があります。
+**IMPORTANT**: If you choose to run the demos in the hosted lab environment rather than your instructor PC, you can unzip the sample apps in the hosted environment. You will need to configure the GitHub Copilot extensions in the hosted environment before you can run the demos. You may find that the hosted environment is slower than your local environment, so you may need to adjust the pace of the demos accordingly.
 
-### デモを紹介する
+### Introduce the demo
 
-コード セキュリティとは、不正アクセス、データ侵害、その他のセキュリティ上の脅威からソフトウェアを保護するために実行する対策を指します。 コード セキュリティは、セキュリティ上の脅威からアプリケーションとシステムを保護する、ソフトウェア開発の重要な側面です。 コード セキュリティを強化すると、アプリケーションとシステムをセキュリティ上の脅威から保護するのに役立ちます。
+Code security refers to the measures taken to protect software from unauthorized access, data breaches, and other security threats. Code security is an essential aspect of software development that involves protecting applications and systems from security threats. Improving your code security can help you to protect your applications and systems from security threats.
 
 > [!IMPORTANT]
-> このデモが安全なコードを開発するためのベスト プラクティスを示すものではないことを学生に説明します。 そうではなく、GitHub Copilot Chat を使用して、サンプル アプリケーションのコード セキュリティを向上するための提案を示すことに焦点を当てています。 提案は、安全なコードを開発するためのベスト プラクティスや包括的なソリューションを表すものではありません。 開発者は、自身の判断と専門知識を使用して、GitHub Copilot Chat から提供される提案を評価し、実装する必要があります。 GitHub Copilot から提示された提案を実装したとしても、徹底的なコードの確認やテストが必要であることに変わりはありません。
+> Explain to the students that this demo isn't about best practices for developing secure code. Instead, it focuses on how to use GitHub Copilot Chat to generate suggestions for improving code security in a sample application. The suggestions do not represent best practices or comprehensive solutions for developing secure code. Developers should use their judgment and expertise to evaluate and implement the suggestions provided by GitHub Copilot Chat. Implementing suggestions proposed by GitHub Copilot does not replace the need for thorough code reviews and testing.
 
-#### コードセキュリティ
+#### Code security
 
-コード セキュリティの確保は、開発者だけでなく、すべてのユーザーの責任です。 ただし、重要な役割を果たすのは、安全なコーディング プラクティスに確実に従ってコードを記述する開発者です。 安全なコーディング プラクティスは、ソフトウェアの脆弱性が攻撃者によって悪用されないようにするのに役立ちます。 開発者は、安全なコーディング プラクティスに従うことで、ソフトウェアをセキュリティ上の脅威から保護し、安全性と信頼性を確保します。
+Ensuring code security is everyone's responsibility, not just the developer. However, developers play a crucial role by ensuring that the code they write follows secure coding practices. Secure coding practices help to ensure that software vulnerabilities can't be exploited by attackers. By following secure coding practices, developers can help protect the software from security threats and ensure that it is secure and reliable.
 
-以下のセクションでは、学生が知っておくべきコード セキュリティ プロセスの概要について説明します。
+The following sections provide an overview of code security processes that your students should be aware of.
 
-##### 包括的なアプローチを使用してコード セキュリティを評価する
+##### Evaluate code security using a comprehensive approach
 
-コード セキュリティを評価するときは、ソフトウェア開発ライフサイクルのさまざまな側面を網羅した包括的なアプローチを検討することが重要です。 次にいくつかの主な考慮事項を示します。
+When evaluating code security, it’s important to consider a comprehensive approach that encompasses various aspects of the software development lifecycle. Here are some key considerations:
 
-- 安全なコーディング プラクティス:安全なコーディングの標準とガイドラインに従って脆弱性を防ぐ。
-- コード分析ツール:静的および動的なコード分析ツールを使用して、セキュリティ上の欠陥を検出する。
-- 依存関係の管理:サードパーティのライブラリと依存関係が最新状態になっており、既知の脆弱性がないことを確認する。
-- 認証と承認:堅牢な認証と承認のメカニズムを実装して、不正アクセスから保護する。
-- データ保護:保存されている機密データと転送中の機密データを両方とも暗号化して、データ侵害を防ぐ。
-- エラー処理:機密情報を公開しない安全なエラー処理手順を作成する。
-- セキュリティ テスト:侵入テストや脆弱性評価など、徹底的なセキュリティ テストを実施する。
-- コンプライアンス:コードが、関連するセキュリティの標準や規制に準拠していることを確認する。
-- 教育とトレーニング:開発者に継続的なセキュリティ教育とトレーニングを提供し、最新の脅威とベスト プラクティスに関する情報を提供する。
-- インシデント応答:明確に定義されたインシデント応答計画を準備する。 セキュリティ侵害が発生した場合は、インシデント応答計画にアクセスできる必要があります。
+- Secure coding practices: Adhering to secure coding standards and guidelines to prevent vulnerabilities.
+- Code analysis tools: Utilizing static and dynamic code analysis tools to detect security flaws.
+- Dependency management: Ensuring that third-party libraries and dependencies are up-to-date and free from known vulnerabilities.
+- Authentication and authorization: Implementing robust authentication and authorization mechanisms to protect against unauthorized access.
+- Data protection: Encrypting sensitive data both at rest and in transit to prevent data breaches.
+- Error handling: Developing secure error handling procedures that do not expose sensitive information.
+- Security testing: Conducting thorough security testing, including penetration testing and vulnerability assessments.
+- Compliance: Ensuring that the code complies with relevant security standards and regulations.
+- Education and training: Providing developers with ongoing security education and training to keep them informed about the latest threats and best practices.
+- Incident response: Having a well-defined incident response plan prepared. If a security breach occurs, the incident response plan must be accessible.
 
-これらの要素を考慮し、セキュリティのベスト プラクティスを開発プロセスに統合することが、安全なコンテンツとアプリケーションの作成に寄与します。
+Considering these factors and integrating security best practices into your development process contributes to the creation of secure content and applications.
 
-##### コード セキュリティ レビューの実施
+##### Conduct code security reviews
 
-コードが安全であることを確認する際、開発者はコードの次の側面を確認する必要があります。
+When working to ensure that code is secure, developers should review the following aspects of their code:
 
-- 正確さ:セキュリティの脆弱性につながる可能性のある論理的なエラーや欠陥がコードにないことを確認します。
-- セキュリティ:コードがセキュリティのベスト プラクティスに準拠し、脆弱性が含まれていないことを確認します。
-- 診断:適切なログ記録と診断の機能を組み込んで、セキュリティ インシデントを検出し、対応します。
-- 設計エラーまたは制限事項:コードの設計を確認して、悪用される可能性のある欠陥や制限がないことを確認します。
-- スケーラビリティとパフォーマンス:コードのパフォーマンスとスケーラビリティを考慮します。 パフォーマンスとスケーラビリティが低いと、負荷の高いシナリオでセキュリティに影響が及ぶ可能性があります。
-- ローカライズ:コードがさまざまなロケールを安全に処理していることを確認します。これは、データの書式設定と表現に影響を与える可能性があります。
-- アクセシビリティ (UX):セキュリティ対策がアクセシビリティとユーザー エクスペリエンスに悪影響を与えないことを確認します。
-- テスト:テスト戦略を確認し、セキュリティ テストがコードのあらゆる側面を隅々まで網羅していることを確認します。
-- インストルメンテーション:コードが、セキュリティ監視と脅威検出に対応するようにインストルメント化されていることを確認します。
-- 一貫性とコード スタイルの規則:安全なコーディングのガイドラインと標準に準拠した、一貫したコーディング スタイルを維持します。
+- Correctness: Verify that the code is free from logical errors and defects that could lead to security vulnerabilities.
+- Security: Ensure that code adheres to security best practices and doesn't contain vulnerabilities.
+- Diagnostics: Include proper logging and diagnostic capabilities to detect and respond to security incidents.
+- Design errors or limitations: Review the design of the code to ensure there are no flaws or limitations that could be exploited.
+- Scale and performance: Consider the performance and scalability of the code. Poor performance and scalability can impact security in high-load scenarios.
+- Localization: Ensure that the code securely handles different locales, which can affect data formatting and representation.
+- Accessibility (UX): Verify that security measures do not negatively impact the accessibility and user experience.
+- Testing: Review the testing strategies and ensure that security testing is thorough and covers all aspects of the code.
+- Instrumentation: Ensure that the code is instrumented in a way that supports security monitoring and threat detection.
+- Consistency and code style conventions: Maintain a consistent coding style that follows secure coding guidelines and standards.
 
-開発者がコードのこれらの側面を確認すると、コードのセキュリティを大幅に強化できます。 コードのレビューは、開発者が開発するソフトウェアの全体的なセキュリティ体制を支えるのに役立ちます。
+When developers review these aspects of their code, they can significantly enhance the security of their code. Code reviews help developers contribute to the overall security posture of the software they develop.
 
-##### コードの脆弱性の分析
+##### Analyze code vulnerabilities
 
-アプリケーションの特定の部分はセキュリティ攻撃に対して脆弱であり、これらの領域のセキュリティ保護に重点を置くことが重要です。 脆弱性が高い領域の一部を次に示します。
+Certain portions of an application are more vulnerable to security attacks, and it’s crucial to focus on securing these areas. Here are some of the more vulnerable areas:
 
-- 統合ポイント:依存関係のある製品チームとの統合ポイントについて、セキュリティ設計のレビューを実施する必要があります。 レビューは、ビジネスへの影響が大きい (HBI) データを処理する製品や、エンタープライズのアプリケーションとサービスに不可欠です。
-- 内部システム:内部インシデントは、特に中小企業におけるセキュリティ侵害の一般的な原因です。
-- メール システム:メール サーバー、特にサポート対象外のメール サーバーやパッチが適用されていないメール サーバーは常に脆弱です。
-- データベースとストレージ:機密データが保存前に暗号化されることを想定しているデータベースは、データが想定どおりに暗号化されていないと脆弱になる可能性があります。
-- ランタイム環境: Runtime Application Self-Protection (RASP) などのテクノロジは、アプリケーションに対する攻撃をリアルタイムで検出でき、ランタイム環境をセキュリティ保護するべき重要な領域にします。
-- Web アプリケーション:Web アプリケーションは、多くの場合、SQL インジェクション、クロスサイト スクリプティング (XSS)、バッファー オーバーフローなどの方法を使用して攻撃者によって標的にされます。
-- エンドポイント:デバイスとアプリケーションは、サイバー攻撃の危険にさらされます。 ランサムウェアの軽減、アプリケーション制御、Web 保護、ネットワーク ファイアウォールなどの機能を使用して、攻撃対象領域を減らすことが不可欠です。
+- Integration points: Security design reviews must be conducted for integration points with dependent product teams. Reviews are essential for products handling high business impact (HBI) data or enterprise applications and services.
+- Internal systems: Internal incidents are a common cause of security breaches, especially in small businesses.
+- Email systems: Email servers, particularly those that are unsupported or unpatched, are persistently vulnerable.
+- Databases and storage: Databases that expect sensitive data to be pre-encrypted before storage can be vulnerable if the data is not encrypted as expected.
+- Runtime environment: Technologies like Runtime Application Self-Protection (RASP) can detect attacks on an application in real-time, making the runtime environment a critical area to secure.
+- Web applications: Web applications are often targeted by attackers using methods like SQL injection, cross-site scripting (XSS), and buffer overflows.
+- Endpoints: Devices and applications are at risk of cyber attacks. It’s essential to reduce the attack surface using capabilities like ransomware mitigation, application control, web protection, and network firewall.
 
-開発者とセキュリティ チームは、これらの領域に優先順位を付け、潜在的な攻撃から保護するための強力なセキュリティ対策を実装する必要があります。 定期的なセキュリティのレビューと更新、ベスト プラクティスへの準拠は、これらの脆弱性の軽減に役立ちます。
+Developers and security teams should prioritize these areas and implement strong security measures to protect against potential attacks. Regular security reviews, updates, and adherence to best practices can help mitigate these vulnerabilities.
 
-##### 一般的なセキュリティ上の欠陥の調査
+##### Search for common security flaws
 
-開発者は、さまざまなセキュリティ上の欠陥をコード内で見つける場合があり、これらを適切に対処しないと脆弱性につながる可能性があります。 一般的なセキュリティ上の欠陥には、次のようなものがあります。
+Developers can encounter various security flaws in their code, which can lead to vulnerabilities if not properly addressed. Some typical security flaws include:
 
-- インジェクションの欠陥:SQL、NoSQL、OS、LDAP インジェクションなど、信頼されていないデータがコマンドまたはクエリの一部としてインタープリターに送信されます。
-- 認証の不備:認証とセッション管理が正しく実装されていないと、認証が正しく行われない可能性があります。 適切な実装により、パスワード、キー、セッション トークンが攻撃者によって侵害されないようにすることができます。
-- 機密データの露出:機密データの保護が不十分な場合、ネットワーク経由で転送中のデータや、保存されているデータが露出する可能性があります。
-- アクセス制御の不備:認証されたユーザーに付与されるアクセスを制御する制限が適切に適用されていません。
-- クロスサイト スクリプティング (XSS):アプリケーションが、適切な検証やエスケープを行わずに、信頼されていないデータを Web ページに組み込むたびに、XSS の欠陥が発生します。
-- 安全でない逆シリアル化:これにより、リモート コード実行、リプレイ攻撃、インジェクション攻撃、特権エスカレーション攻撃が発生する可能性があります。
-- 不十分なログ記録と監視:ログ記録と監視が不十分で、さらに、インシデント応答との統合が欠落しているか効果的でない場合、継続的な攻撃を許すことになります。
-- 安全でない直接オブジェクト参照 (IDOR):アプリケーションが、ユーザー指定の入力に基づいて、オブジェクトへの直接アクセスを提供する場合に発生する、アクセス制御問題の一種です。
-- 機能レベルのアクセス制御の欠落:アプリケーションが機能レベルのアクセス制御を適切に保護しないために、攻撃者が適切な認証なしで機能へのアクセス要求を偽造できてしまう場合があります。
+- Injection Flaws: Such as SQL, NoSQL, OS, and LDAP injection, where untrusted data is sent to an interpreter as part of a command or query.
+- Broken Authentication: When authentication and session management are implemented incorrectly, authentication can be broken. Good implementations ensure that passwords, keys, and session tokens aren't compromised by attackers.
+- Sensitive Data Exposure: Inadequate protection of sensitive data can lead to exposure during transfer over the network or at rest.
+- Broken Access Control: Restrictions that control the access granted to authenticated users are not being properly enforced.
+- Cross-Site Scripting (XSS): XSS flaws occur whenever an application includes untrusted data in a web page without proper validation or escaping.
+- Insecure Deserialization: This can lead to remote code execution, replay attacks, injection attacks, and privilege escalation attacks.
+- Insufficient Logging & Monitoring: Insufficient logging and monitoring, coupled with missing or ineffective integration with incident response, allows for continued attacks.
+- Insecure Direct Object References (IDOR): A type of access control issue that arises when an application provides direct access to objects based on user-supplied input.
+- Missing Function Level Access Control: Sometimes an application does not properly protect function level access controls, allowing attackers to forge requests to access functionality without proper authorization.
 
-他にも多くのセキュリティ上の欠陥がコードで見つかることがあります。 開発者は、ツールとベスト プラクティスを使って、これらの問題を事前に特定して修正することが重要です。
+Many other security flaws can be found in code. It’s important for developers to use tools and best practices to identify and fix these issues proactively.
 
-### GitHub Copilot Chat のプロンプトを開発する
+### Develop prompts for GitHub Copilot Chat
 
-GitHub Copilot Chat について記述するプロンプトでは、明確に定義したコンテキストと意図を指定する必要があります。 プロンプトを開発するときは、次の推奨事項を考慮してください。
+The prompts you write for GitHub Copilot Chat should provide a clearly defined context and intent. Consider the following suggestions when developing your prompts:
 
-- 更新するコードよりも高いレベルで範囲を設定する、外側のコンテキストを定義します。 たとえば、メソッドを改善する場合は、そのメソッドを含むクラスまたはファイルを外側のコンテキストとして指定します。 メソッドを内側のコンテキストとして識別します。
-- チャット参加者とチャット変数を使用して、コンテキストを指定します。 `#file:` と `#selection` のチャット変数を使用して、焦点を当てる特定のコードを識別できます。 必要に応じて、ワークスペース全体 (`@workspace`) を含めることもできます。 ファイルまたはプロンプトの自然言語部分の選択対象を参照してください。
-- 意図は明確かつ簡潔で、具体的である必要があります。 プロンプトでは、達成したい改善点の種類を指定する必要があります。
+- Define an outer context that's scoped at a higher level than the code you want to update. For example, if you want to improve a method, specify the class or file that includes the method as the outer context. Identify the method as an inner context.
+- Use chat participants and chat variables to help specify context. You can use the `#file:` and `#selection` chat variables to identify the specific code you are focused on. You can also include the full workspace (`@workspace`) when appropriate. Refer to the file or code selection in the natural language portion of your prompt.
+- The intent should be clear, concise, and specific. Your prompt should specify the type of improvement you want to achieve.
 
-デモのこの部分では、**APL2007M5BankAccount-Security** プロジェクトを確認し、GitHub Copilot Chat のプロンプトを 3 つ作成します。 プロンプトでは、コード セキュリティの向上に重点を置きます。
+During this portion of the demo, you review the **APL2007M5BankAccount-Security** project and create three prompts for GitHub Copilot Chat. The prompts focus on improving code security.
 
-次の手順に従って、デモのこの部分を完了します。
+Use the following steps to complete this portion of the demo:
 
-1. **APL2007M5BankAccount-Security** プロジェクトを開き、**Program.cs** と **BankAccount.cs** コード ファイルを確認します。
+1. Open the **APL2007M5BankAccount-Security** project, and then review the **Program.cs** and **BankAccount.cs** code files.
 
-    **Program.cs** ファイルには、銀行口座の作成、トランザクション、転送をシミュレートする単純な銀行アプリケーションのコードが含まれています。
+    The **Program.cs** file contains the code for a simple banking application that simulates the creation of bank accounts, transactions, and transfers.
 
-    **BankAccount.cs** ファイルには、預金、出金、残高照会などの基本的な機能を備えた銀行口座を表す、`BankAccount` クラスのコードが含まれています。
+    The **BankAccount.cs** file contains the code for the `BankAccount` class, which represents a bank account with basic functionalities such as deposit, withdrawal, and balance inquiry.
 
-1. 少し時間を取って、コードのセキュリティを向上させるために使用できるプロンプトを説明します。
+1. Take a minute to describe some prompts that could be used to improve code security.
 
-    このプロジェクトでは、次のプロンプトを使用して、コード セキュリティを向上するための提案を生成できます。
+    For this project, you can use the following prompts to generate suggestions for improving your code security:
 
-    プロンプト: `@workspace /explain How can I implement authentication in the [selected code]?` (チャット コンテキストに BankAccount.cs をアタッチ)
+    Prompt: `@workspace /explain How can I implement authentication in the [selected code]?` (attach BankAccount.cs to the Chat context)
 
-    プロンプト: `@workspace /explain How can I protect sensitive data in the [selected code]?` (チャット コンテキストに BankAccount.cs を添付する)
+    Prompt: `@workspace /explain How can I protect sensitive data in the [selected code]?` (attach BankAccount.cs to the Chat context)
 
-    プロンプト: `@workspace /explain How can I implement logging of suspicious account activities of the [selected code]?` (チャット コンテキストに BankAccount.cs を添付する)
+    Prompt: `@workspace /explain How can I implement logging of suspicious account activities of the [selected code]?` (attach BankAccount.cs to the Chat context)
 
-    プロンプト: `@workspace /explain How can I improve the security of exception handling in the [selected code]?` (チャット コンテキストに BankAccount.cs を添付する)
+    Prompt: `@workspace /explain How can I improve the security of exception handling in the [selected code]?` (attach BankAccount.cs to the Chat context)
 
-    プロンプト: `@workspace /explain How can I improve the security of the [selected code]?` (チャット コンテキストに BankAccount.cs を添付する)
+    Prompt: `@workspace /explain How can I improve the security of the [selected code]?` (attach BankAccount.cs to the Chat context)
 
-    プロンプト: `@workspace /explain How can I improve the security of the [selected code]?` (チャット コンテキストに Program.cs を添付する)
+    Prompt: `@workspace /explain How can I improve the security of the [selected code]?` (attach Program.cs to the Chat context)
 
-1. デモの残りの部分で使用する 3 つのプロンプトを選択します。
+1. Select three prompts to use during the remainder of the demo.
 
-    BankAccount.cs ファイルのセキュリティの問題に対処する 2 つのプロンプトと、Program.cs ファイルの問題に対処する 1 つのプロンプトを選択してください。 このデモでは、BankAccount クラスが "product" を表します。 Program.cs ファイルは、BankAccount クラスを使用して、口座のアクティビティとトランザクションをシミュレートします。
+    Try to select two prompts that address security issues in the BankAccount.cs file and one for the Program.cs file. In this demo, the BankAccount class represents your "product". The Program.cs file uses the BankAccount class to simulate account activities and transactions.
 
-### GitHub Copilot Chat を使用して BankAccount クラスのコード セキュリティを強化する
+### Improve code security of the BankAccount class using GitHub Copilot Chat
 
-安全なコードの開発は、どのソフトウェア プロジェクトにも不可欠です。 必要なセキュリティ レベルは、アプリケーションの性質と処理するデータによって異なります。
+Developing secure code is essential for any software project. The level of security required depends on the nature of the application and the data it processes.
 
-このデモでは、GitHub Copilot Chat を使用して、**APL2007M5BankAccount-Security** プロジェクトの BankAccount クラスのセキュリティを向上させる提案を生成します。
+In this demonstration, you use GitHub Copilot Chat to generate suggestions for improving the security of the BankAccount class in the **APL2007M5BankAccount-Security** project.
 
-コード セキュリティを向上するには、GitHub Copilot Chat を使用できます。 プロンプトは、GitHub Copilot に対して、認証、データ保護、ログ記録、その他多数のトピックを改善するための提案を生成するように指示できます。 また、コード セキュリティを向上するための一般的な提案を求める、広範なプロンプトを作成することもできます。 特定のプロンプトと一般的なプロンプトを組み合わせることで、改善が必要な領域を特定し、必要な変更を実装できます。
+GitHub Copilot Chat can be used to help improve code security. Your prompts can direct GitHub Copilot to generate suggestions for improving authentication, data protection, logging, and dozens of other topics. You can also create broadly scoped prompts that ask for general suggestions to improve code security. A combination of specific and general prompts can help you to identify areas that need improvement and implement the necessary changes.
 
 > [!TIP]
-> 推奨される更新プログラムの実装とテストには時間がかかり、このデモでは時間が決め手になる可能性があります。 特定の改善領域に焦点を当てたプロンプトを選択すると、時間を管理するのに役立ちます。 プロンプトが広範囲すぎると、多数の提案が生成されたり、短時間では評価や実装が困難な複雑な提案が生成される場合があります。 開始後に、提案された更新の範囲が広すぎる、または複雑すぎると感じたら、より具体的なプロンプトに更新できます。
+> Implementing and testing suggested updates takes time, and time may be a factor during this demo. Selecting prompts that focus on specific areas of improvement can help you to manage your time. Prompts that are too broad may generate a large number of suggestions or complex suggestions that are difficult to evaluate and implement in a short amount of time. Once you begin, you can update your prompts with more specific details if you find that the suggested updates are too broadly scoped or too complex.
 
-1. プロジェクトがビルドされ、エラーなしで実行されることを確認します。
+1. Ensure that the project builds and runs without errors.
 
-    警告はアプリケーションが実行されている限り許容されますが、エラーは、GitHub Copilot Chat の使用を開始する前に解決する必要があります。
+    Warnings are acceptable as long as the application runs, but errors must be resolved before you start working with GitHub Copilot Chat.
 
-1. Visual Studio Code で BankAccount.cs ファイルを開き、ファイル内のすべてのコードを選択します。
+1. Open the BankAccount.cs file in Visual Studio Code, and then select all of the code in the file.
 
-1. チャット ビューを開きます。
+1. Open the Chat view.
 
-1. チャット ビューで、**[コンテキスト添付]** ボタンを使用して関連するファイルをチャット コンテキストに追加し、プロンプトを入力します。
+1. In the Chat view, use the **Attach Context** button to add relevant files to the Chat context, and then enter your prompt.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - BankAccount.cs ファイルを開き、すべてのコードを選択します。
-    - 次のプロンプトを選択します: `@workspace /explain How can I implement authentication in the BankAccount.cs file?`
-    - チャット ビューを開き、BankAccount.cs ファイルと Program.cs ファイルをチャット コンテキストに添付します。
-    - チャット ビューにプロンプトを入力します。
+    - You open the BankAccount.cs file and select all of the code.
+    - You choose the following prompt: `@workspace /explain How can I implement authentication in the BankAccount.cs file?`
+    - You open the Chat view and attach the BankAccount.cs and Program.cs files to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *通常、このコンテキストで認証を実装する場合は、特定の操作を許可する前に、口座所有者の ID を検証するメソッドを BankAccount クラスに追加します。これは、パスワード、PIN、またはその他の形式の認証を使用して行うことができます。*
+    *Implementing authentication in this context would typically involve adding a method to the BankAccount class that verifies the account holder's identity before allowing certain operations. This could be done using a password, a PIN, or some other form of authentication.*
 
-    *BankAccount クラスにパスワードベースの認証を追加する方法の簡単な例を次に示します。*
+    *Here's a simple example of how you might add password-based authentication to the BankAccount class:*
 
     ```csharp
 
@@ -199,61 +199,61 @@ GitHub Copilot Chat について記述するプロンプトでは、明確に定
 
     ```
 
-    *この例では、パスワードが BankAccount コンストラクターにパラメーターとして追加され、プライベート フィールドに格納されます。指定されたパスワードが格納されているパスワードと一致するかどうかを確認する Authenticate メソッドが追加されます。Credit メソッド (および認証を必要とするその他のメソッド) は、操作を実行する前にパスワードを引数として受け取り、Authenticate を呼び出すように変更されます。*
+    *In this example, a password is added as a parameter to the BankAccount constructor and stored in a private field. An Authenticate method is added that checks if the provided password matches the stored password. The Credit method (and other methods that should require authentication) is modified to take a password as an argument and call Authenticate before performing the operation.*
 
-    *これはきわめて基本的な認証形式であり、実際のアプリケーションでは安全性が十分ではありません。実際のアプリケーションでは、パスワードを格納する前にハッシュしてソルト化する必要があり、安全な方法でユーザーからアプリケーションにパスワードを送信する必要があります。また、2 要素認証やその他のより安全な方法の使用を検討することもできます。*
+    *This is a very basic form of authentication and is not secure enough for real applications. In a real application, you would want to hash and salt the password before storing it, and you would need to use secure methods to transmit the password from the user to the application. You might also want to consider using two-factor authentication or other more secure methods.*
 
-1. `BankAccount` クラスのコード セキュリティを向上するのに役立つ、提案された更新を実装します。
+1. Implement the suggested updates that help to improve code security for your `BankAccount` class.
 
-    Program.cs ファイルは、BankAccount クラスに追加されたパスワードと認証を使用するように更新する必要があります。 GitHub Copilot Chat を使用して、Program.cs ファイルを更新するための提案を生成できます。
+    The Program.cs file must be updated to use the password and authentication added to the BankAccount class. You can use GitHub Copilot Chat to generate suggestions for updating the Program.cs file.
 
-    1. Program.cs ファイルの内容を選択し、Program.cs ファイルと BankAccount.cs ファイルをチャット コンテキストにアタッチし、チャット ビューに次のプロンプトを入力します。
+    1. Select the contents of the Program.cs file, attach the Program.cs and BankAccount.cs files to the Chat context, and then enter the following prompt in the Chat view:
 
         ```plaintext
         @workspace /Explain How can I update the Program.cs file to use the password and authentication added to BankAccount.cs?
         ```
 
-    1. GitHub Copilot Chat によって提供される提案を確認し、推奨される更新を実装します。
+    1. Review the suggestions provided by GitHub Copilot Chat, and then implement the suggested updates.
 
-    1. 変更によってエラーが発生しないようにするには、続行する前にソリューションをビルドして実行します。
+    1. To ensure that no errors were introduced by the changes, build and run your solution before continuing.
 
-        GitHub Copilot を使用して、ビルド プロセス中に特定された問題を解決するための支援とします。
+        Use GitHub Copilot to help resolve any issues identified during the build process.
 
     > [!IMPORTANT]
-    > きわめて基本的なこの認証形式は、実際のアプリケーションでは安全性が不十分なことを学生に理解させてください。 実際のアプリケーションでは、パスワードを格納する前にハッシュしてソルト化する必要があり、安全な方法でユーザーからアプリケーションにパスワードを送信する必要があります。 また、2 要素認証やその他のより安全な方法の使用を検討することもできます。
+    > Ensure that your students understand this very basic form of authentication is not secure enough for real applications. In a real application, you would want to hash and salt the password before storing it, and you would need to use secure methods to transmit the password from the user to the application. You might also want to consider using two-factor authentication or other more secure methods.
 
-1. 続行する前に、アプリケーションがビルドされて実行されていることを確認します。
+1. Ensure that your application builds and runs before continuing.
 
-1. BankAccount.cs ファイル内のすべてのコードを選択し、チャット ビューに 2 番目のプロンプトを入力します。
+1. Select all of the code in the BankAccount.cs file, and then enter your second prompt in the Chat view.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - BankAccount.cs ファイルを開き、すべてのコードを選択します。
-    - 次のプロンプトを選択します: `@workspace /explain How can I protect account numbers and account holder names in the selected code?`
-    - チャット ビューを開き、BankAccount.cs ファイルと Program.cs ファイルをチャット コンテキストに添付します。
-    - チャット ビューにプロンプトを入力します。
+    - You open the BankAccount.cs file and select all of the code.
+    - You choose the following prompt: `@workspace /explain How can I protect account numbers and account holder names in the selected code?`
+    - You open the Chat view and attach the BankAccount.cs and Program.cs files to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *口座番号や口座名義人名など、BankAccount クラスの機密データを保護するには、次の手順を実行します。*
+    *To protect sensitive data such as account numbers and account holder names in your BankAccount class, you can take the following steps:*
 
-    *1.カプセル化を使用する:*
+    *1. Use Encapsulation:*
 
-    *- 機密性の高いプロパティをプライベートにし、メソッドを使用して制御されたアクセスを提供します。*
+    *- Make the sensitive properties private and provide controlled access through methods.*
 
-    *2.機密データを暗号化する:*
+    *2. Encrypt Sensitive Data:*
 
-    *- 暗号化を使用して機密データを安全に格納します。*
+    *-Use encryption to store sensitive data securely.*
 
-    *3.プレーンテキストでの格納を避ける:*
+    *3. Avoid Plaintext Storage:*
 
-    *- 機密データがプレーンテキストで格納されたり送信されたりしないようにします。*
+    *- Ensure that sensitive data is not stored or transmitted in plaintext.*
 
-    *更新された実装*:
+    *Updated Implementation*
 
-    *アカウント番号とアカウント所有者名に暗号化を使用する BankAccount.cs の更新バージョンを次に示します。*
+    *Here is an updated version of BankAccount.cs that uses encryption for account numbers and account holder names:*
 
     ```csharp
 
@@ -521,56 +521,56 @@ GitHub Copilot Chat について記述するプロンプトでは、明確に定
 
     ```
 
-    *使用法:*
+    *Usage:*
 
-    *- 必要な暗号化ライブラリが使用可能であることを確認します。上の例では、簡明さを目的としてハードコーディングされたキーと IV を使用した AES 暗号化を使用しています。実際のアプリケーションでは、キーと IV を安全に管理する必要があります (一例としてはキー管理サービスを使用するなど)。*
+    *- Ensure you have the necessary cryptographic libraries available. The above example uses AES encryption with a hardcoded key and IV for simplicity. In a real-world application, you should securely manage keys and IVs, possibly using a key management service.*
 
     > [!IMPORTANT]
-    > 実際のアプリケーションでは、キーと IV を安全に管理する必要があります (一例としてはキー管理サービスを使用するなど)。 このトレーニングで提供される例では、改善の余地のある点を特定していますが、セキュリティで保護された暗号化のベスト プラクティスを表すものではありません。 GitHub Copilot Chat を使用して、アプリケーションの暗号化とデータ保護を改善するためのさらなる提案を求めることができます。
+    > In a real-world application, you should securely manage keys and IVs, possibly using a key management service. The examples provided in this training identify areas for improvement but do not represent best practices for secure encryption. You can use GitHub Copilot Chat to pursue additional suggestions for improving encryption and data protection in your application.
 
-1. 2 番目のプロンプトで推奨される更新を実装する必要はありません。
+1. Do not need to implement the suggested updates for the second prompt.
 
-    この例では、推奨される更新はアプリケーションのセキュリティを強化するのに役立ちますが、それには Program.cs コードに対する相当な構成と更新が必要となります。これは、このデモの対象範囲ではありません。
+    In the example, the suggested updates would help to improve the security of the application, but they require significant configuration and updates to the Program.cs code that is beyond the scope of this demo.
 
-### GitHub Copilot Chat を使用して Program クラスのコード セキュリティを強化する
+### Improve code security of the Program class using GitHub Copilot Chat
 
-1. Visual Studio Code で Program.cs ファイルを開き、ファイル内のすべてのコードを選択します。
+1. Open the Program.cs file in Visual Studio Code, and then select all of the code in the file.
 
-1. チャット ビューを開き、Program クラス用に準備した最初のプロンプトを入力します。
+1. Open the Chat view, and then enter the first prompt that you prepared for the Program class.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、次のアクションを完了したとします。
+    For example, suppose you complete the following actions:
 
-    - Program.cs ファイルを開き、すべてのコードを選択します。
-    - 次のプロンプトを選択します: `@workspace /explain How can I improve the security of the Program.cs file?`
-    - チャット ビューを開き、BankAccount.cs ファイルと Program.cs ファイルをチャット コンテキストに添付します。
-    - チャット ビューにプロンプトを入力します。
+    - You open the Program.cs file and select all of the code.
+    - You choose the following prompt: `@workspace /explain How can I improve the security of the Program.cs file?`
+    - You open the Chat view and attach the BankAccount.cs and Program.cs files to the Chat context.
+    - You enter the prompt in the Chat view.
 
-    GitHub Copilot Chat から、次の応答のような更新内容が提案されます。
+    GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *Program.cs ファイルのセキュリティを強化するには、次の領域に重点を置く必要があります。*
+    *To improve the security of the Program.cs file, you should focus on the following areas:*
 
-    *1.パスワードの取り扱いをセキュリティで保護する:*
+    *1. Secure Password Handling:*
 
-    *- 安全なパスワード ハッシュを使用し、プレーンテキストでパスワードを格納しないようにします。*
-    *- パスワードをハッシュするために BCrypt.Net などのライブラリを使用します。*
+    *- Use secure password hashing and avoid storing passwords in plaintext.*
+    *- Use a library like BCrypt.Net for hashing passwords.*
 
-    *2.機密データを暗号化する:*
+    *2. Encrypt Sensitive Data:*
 
-    *- アカウント番号やアカウント所有者名などの機密データを暗号化します。*
+    *- Encrypt sensitive data such as account numbers and account holder names.*
 
-    *3.パスワードのハードコーディングは避ける:*
+    *3. Avoid Hardcoded Passwords:*
 
-    *- ハードコーディングされたパスワードは使用しないでください。代わりに、強力なランダム パスワードを生成するか、独自のパスワードを作成するようユーザーに求めます。*
+    *- Avoid using hardcoded passwords. Instead, generate strong random passwords or prompt users to create their own.*
 
-    *4.安全な乱数生成を使用する:*
+    *4. Use Secure Random Number Generation:*
 
-    *- 機密データの生成に暗号論的乱数生成器を使用します。*
+    *- Use a cryptographically secure random number generator for generating sensitive data.*
 
-    *更新された実装*:
+    *Updated Implementation*
 
-    *次の機能強化が組み込まれた Program.cs の更新バージョンを次に示します。*
+    *Here is an updated version of Program.cs that incorporates these improvements:*
 
     ```csharp
 
@@ -745,39 +745,39 @@ GitHub Copilot Chat について記述するプロンプトでは、明確に定
 
     ```
 
-1. この Program.cs の更新は、安全な乱数の生成に焦点を当てていることに注意してください。
+1. Notice that the updates to Program.cs focused on secure random number generation.
 
-    別の提案は BankAccount クラスに適用されるものです。その実装はこのトレーニングの対象範囲ではありません。
+    The other suggestions apply to the BankAccount class, and the implementation is beyond the scope of this training.
 
-1. 安全な例外処理を目的とする Program.cs の追加のプロンプトを作成します。
+1. Construct an additional prompt for Program.cs that seeks to secure exception handling.
 
-1. GitHub Copilot Chat から提供される提案を確認します。
+1. Review the suggestions provided by GitHub Copilot Chat.
 
-    たとえば、[チャット] ビューに `@workspace /explain How can I implement secure exception handling in the Program.cs file?` と入力すると、GitHub Copilot Chat からは、次の応答のような更新が提案されます。
+    For example, if you enter `@workspace /explain How can I implement secure exception handling in the Program.cs file?` in the Chat view, GitHub Copilot Chat suggests updates that are similar to the following response:
 
-    *Program.cs ファイルに安全な例外処理を実装するには、次のベスト プラクティスに従う必要があります。*
+    *To implement secure exception handling in the Program.cs file, you should follow these best practices:*
 
-    *1.具体的な例外をキャッチする:*
+    *1. Catch Specific Exceptions:*
 
-    *- 一般的な catch (Exception ex) ブロックを使用するのではなく、具体的な例外をキャッチします。これは、さまざまな種類のエラーを適切に解釈して処理するのに役立ちます。*
+    *- Catch specific exceptions rather than using a general catch (Exception ex) block. This helps in understanding and handling different types of errors appropriately.*
 
-    *2.例外を安全にログに記録する:*
+    *2. Log Exceptions Securely:*
 
-    *- 機密情報を公開することなく、例外を安全にログに記録します。ログ記録フレームワークを使用してログを管理します。*
+    *- Log exceptions securely without exposing sensitive information. Use a logging framework to manage logs.*
 
-    *3.わかりやすいメッセージを提供する:*
+    *3. Provide User-Friendly Messages:*
 
-    *- 内部的な詳細を明らかにすることなく、わかりやすいエラー メッセージを提供します。*
+    *- Provide user-friendly error messages without revealing internal details.*
 
-    *4.finally ブロックをクリーンアップに使用する:*
+    *4. Use Finally Blocks for Cleanup:*
 
-    *- 例外がスローされたかどうかに関係なく、finally ブロックを使用して、必要なクリーンアップが確実に実行されるようにします。*
+    *- Use finally blocks to ensure that any necessary cleanup is performed, regardless of whether an exception was thrown.*
 
-    *5.クリティカルでない例外のキャッチを避ける:*
+    *5. Avoid Catching Non-Critical Exceptions:*
 
-    *- OutOfMemoryException や StackOverflowException など、伝達を許可するべき例外をキャッチしないようにします。*
+    *- Avoid catching exceptions that should be allowed to propagate, such as OutOfMemoryException or StackOverflowException.*
 
-    *安全な例外処理を備えた Program.cs の更新バージョンを次に示します。*
+    *Here is an updated version of Program.cs with secure exception handling:*
 
     ```csharp
 
@@ -997,10 +997,10 @@ GitHub Copilot Chat について記述するプロンプトでは、明確に定
 
     ```
 
-1. `Program.cs` ファイルのコード セキュリティを向上するのに役立つ、提案された更新を実装します。
+1. Implement the suggested updates that help to improve code security for your `Program.cs` file.
 
-1. 変更によってエラーが発生しないようにするには、ソリューションをビルドして実行します。
+1. To ensure that no errors were introduced by the changes, build and run your solution.
 
-## まとめ
+## Summary
 
-このデモでは、GitHub Copilot Chat を使用して、サンプル アプリケーションのコード セキュリティを向上させる提案を生成しました。 認証、データ保護、ログ記録、その他のセキュリティ関連のトピックを改善するための提案を提供するように GitHub Copilot に指示するプロンプトを開発しました。 **APL2007M5BankAccount-Security** プロジェクトで BankAccount クラスと Program クラスのセキュリティを向上するために、提案された更新を実装しました。
+In this demo, you used GitHub Copilot Chat to generate suggestions for improving code security in a sample application. You developed prompts that directed GitHub Copilot to provide suggestions for improving authentication, data protection, logging, and other security-related topics. You implemented the suggested updates to improve the security of the BankAccount class and the Program class in the **APL2007M5BankAccount-Security** project.
